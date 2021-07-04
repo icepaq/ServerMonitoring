@@ -11,24 +11,30 @@ export default async (req, res) => {
     const thresholds = await TH.main(server);
     const pingTH = thresholds.ping;
     const lossTH = thresholds.loss;
-
+    
     const collection = client.db('serverpanel').collection('latency');
     const cursor = collection.find({server: server}).sort({time: -1});
 
     let latencyresults = [];
-    let alerts = {};
+    let alerts = {
+        alert: false,
+        down: false,
+        highlatency: false,
+        loss: false
+    };
 
     await cursor.forEach((result) => {
         latencyresults.push({
             latency: result.latency,
+            loss: result.loss,
             alive: result.alive
         });
     });
 
     // Check if server is down
     for(let i = 0; i < 3; i++) {
+        
         if (latencyresults[i].alive) {
-            alerts.alert = false;
             break;
         }
 
@@ -39,11 +45,20 @@ export default async (req, res) => {
     // Check for high latency
     for(let i = 0; i < 2; i++) {
         if(latencyresults[i].latency < pingTH) {
-            alerts.alert = false;
             break;
         }
         alerts.alert = true;
         alerts.highlatency = true;
+    }
+
+    // Check for packetloss loss
+    for(let i = 0; i < 2; i++) {
+        if(latencyresults[i].loss <= lossTH + 1 ) {
+            break;
+        }
+
+        alerts.alert = true;
+        alerts.loss = true;
     }
 
     res.status(200).json({results: alerts});
