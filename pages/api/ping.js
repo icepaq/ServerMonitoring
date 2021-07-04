@@ -13,11 +13,15 @@ export default async (req, res) => {
     const cursor = collection.find({server: server}).sort({time: 1});
 
     let results = [];
-
+    
     await cursor.forEach((result) => {
+
+        let date = new Date(result.time);
         results.push({
             latency: result.latency,
-            time: result.time
+            loss: result.loss,
+            time: result.time,
+            datestring: date.toLocaleString()
         });
     });
 
