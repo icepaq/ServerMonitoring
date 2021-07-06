@@ -1,6 +1,6 @@
-//Get email from server
+//
 
-export async function getEmail(server) {
+export async function getServer(server) {
     const { MongoClient } = require("mongodb");
 
     const uri =

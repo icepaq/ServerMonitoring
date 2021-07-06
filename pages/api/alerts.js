@@ -13,7 +13,7 @@ export default async (req, res) => {
     const check = new checkToken(server);
 
     const key_email = await check.run(key);
-    const server_email = await getEmail.getEmail(server);
+    const server_email = await getEmail.getServer(server);
 
     if (key_email.email != server_email.email) {
         console.log();
