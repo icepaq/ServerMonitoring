@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-import * as CPU from "./hardware/cpu.js";
 
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
