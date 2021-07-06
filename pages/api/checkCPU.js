@@ -9,7 +9,6 @@ export default async (req, res) => {
     const server = req.query.server;
     const key = req.query.key;
     let pid;
-    let results;
 
     await fetch("http://" + server + ":8080/getCPU?api_key=" + key)
         .then((re) => re.json())
