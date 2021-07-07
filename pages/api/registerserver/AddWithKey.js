@@ -3,7 +3,7 @@ import * as Register from "./databaseactions/Register.js";
 
 export async function register(server, key) {
     console.log("fetching");
-    fetch("http://" + server + ":8080/getCPU" + "?api_key=" + key)
+    fetch("http://" + server + ":8080/setup" + "?api_key=" + key)
         .then((res) => res.json())
         .then((res) => {
             console.log(res);
