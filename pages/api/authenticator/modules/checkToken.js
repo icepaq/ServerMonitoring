@@ -19,27 +19,13 @@ module.exports = class CheckToken {
             let query = {
                 token: parseInt(key),
             };
-            console.log(key);
 
             let r = await collection.findOne(query);
 
-            console.log(Date.now());
-            console.log(r.expiry);
-            console.log(Date.now() - r.expiry);
-
-            if (Date.now() - r.expiry < 60000) {
-                result = {
-                    expired: false,
-                    email: r.email,
-                };
-            } else {
-                result = {
-                    expired: true,
-                    email: r.email,
-                };
-            }
-
-            console.log(r);
+            result = {
+                expired: true,
+                email: r.email,
+            };
         } catch (err) {
             console.log(err);
         } finally {
