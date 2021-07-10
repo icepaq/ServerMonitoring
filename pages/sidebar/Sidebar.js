@@ -6,13 +6,12 @@ export default function Sidebar() {
     return (
         <div className={Styles.sidebar}>
             <Header />
-            <Item message="Overview" />
-            <Item message="Servers" />
-            <Item message="Alerts" />
-            <Item message="Mobile Alerts" />
-            <Item message="API Keys" />
-            <Item message="Pin Servers" />
-            <Item message="Settings" />
+            <Item message="Overview" link="/Overview" />
+            <Item message="Servers" link="/Servers" />
+            <Item message="Alerts" link="/Alerts" />
+            <Item message="Mobile Alerts" link="/MobileAlerts" />
+            <Item message="API Keys" link="/Keys" />
+            <Item message="Settings" link="/Settings" />
         </div>
     );
 }

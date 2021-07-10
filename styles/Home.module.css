@@ -5,7 +5,14 @@
     position: fixed;
 }
 
+.link {
+    text-decoration: none;
+}
+
 .sidebarItem {
+
+    text-decoration: none;
+
     color:#bcbcbc;
     background-color: #161616;
     
