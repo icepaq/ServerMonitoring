@@ -1,4 +1,4 @@
-import Sidebar from "./sidebar/Sidebar.js";
+/*import Sidebar from "./sidebar/Sidebar.js";
 import Keys from "./Keys/Keys.js";
 
 export default function keys() {
@@ -9,3 +9,4 @@ export default function keys() {
         </div>
     );
 }
+*/
