@@ -1,6 +1,6 @@
 import Styles from "../../../styles/Home.module.css";
 
-export default function Graph() {
+export default function Graph(props) {
     const ServerName = "Cloudflare DNS";
     const LastUpdate = "14:23:01 Jul-09-2021";
 

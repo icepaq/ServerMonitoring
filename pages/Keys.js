@@ -2,6 +2,7 @@
 //import Keys from "./Keys/Keys.js";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Cookies from "universal-cookie";
 
 export default function keys() {
     const cookie = new Cookies();

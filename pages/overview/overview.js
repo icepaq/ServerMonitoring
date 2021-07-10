@@ -3,13 +3,13 @@ import Greeting from "../GeneralComponents/greeting.js";
 import InformationRow from "./InformationRow/InformationRow.js";
 import Graph from "./Graph/Graph.js";
 
-export default function OverviewComponent() {
+export default function OverviewComponent(props) {
     return (
         <div className={Styles.overviewComponent}>
             <Greeting />
-            <InformationRow />
+            <InformationRow token={props.token} />
             <div className="graphWrapper">
-                <Graph />
+                <Graph token={props.token} />
             </div>
         </div>
     );

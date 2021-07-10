@@ -2,6 +2,7 @@ import Sidebar from "./sidebar/Sidebar.js";
 import Overview from "./overview/overview.js";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Cookies from "universal-cookie";
 
 export default function OverviewPage() {
     const cookie = new Cookies();
@@ -17,7 +18,7 @@ export default function OverviewPage() {
     return (
         <div className="wrapper">
             <Sidebar />
-            <Overview />
+            <Overview token={token} />
         </div>
     );
 }
