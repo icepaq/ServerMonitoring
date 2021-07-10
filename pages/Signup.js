@@ -1,5 +1,7 @@
 import Styles from "../styles/Login.module.css";
 import localStyles from "../styles/Signup.module.css";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Login() {
     return (

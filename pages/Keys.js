@@ -1,5 +1,7 @@
 //import Sidebar from "./sidebar/Sidebar.js";
 //import Keys from "./Keys/Keys.js";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function keys() {
     const cookie = new Cookies();

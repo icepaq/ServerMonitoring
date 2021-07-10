@@ -1,5 +1,7 @@
 import Sidebar from "./sidebar/Sidebar.js";
 import Alerts from "./alerts/Alerts.js";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function alerts() {
     const cookie = new Cookies();

@@ -1,5 +1,7 @@
 import Sidebar from "./sidebar/Sidebar.js";
 import Server from "./server/Server.js";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function ServerPage() {
     const cookie = new Cookies();
