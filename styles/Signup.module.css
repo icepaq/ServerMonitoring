@@ -1,0 +1,10 @@
+.center {
+    font-size: 30px;
+    width: 360px;
+    margin: auto;
+
+    text-align: center;
+    align-items: center;
+
+    padding: 200px 0px;
+}

@@ -12,7 +12,9 @@
     "next": "10.2.3",
     "ping": "^0.4.1",
     "react": "17.0.2",
+    "react-cookie": "^4.0.3",
     "react-dom": "17.0.2",
-    "tracer": "^1.1.4"
+    "tracer": "^1.1.4",
+    "universal-cookie": "^4.0.4"
   }
 }
