@@ -1,9 +1,10 @@
 import Styles from "../../styles/Home.module.css";
+import Link from "next/link";
 
 export default function Item(props) {
     return (
-        <a href={props.link}>
+        <Link href={props.link}>
             <div className={Styles.sidebarItem}>{props.message}</div>
-        </a>
+        </Link>
     );
 }
