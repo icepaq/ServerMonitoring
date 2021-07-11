@@ -50,33 +50,45 @@ export default async (req, res) => {
         });
     });
 
-    // Check if server is down
-    for (let i = 0; i < 3; i++) {
-        if (latencyresults[i].alive) {
-            break;
-        }
+    try {
+        // Check if server is down
+        for (let i = 0; i < 3; i++) {
+            if (latencyresults[i].alive) {
+                break;
+            }
 
-        alerts.alert = true;
-        alerts.down = true;
+            alerts.alert = true;
+            alerts.down = true;
+        }
+    } catch (err) {
+        console.log("Alive not found");
     }
 
-    // Check for high latency
-    for (let i = 0; i < 2; i++) {
-        if (latencyresults[i].latency < pingTH) {
-            break;
+    try {
+        // Check for high latency
+        for (let i = 0; i < 2; i++) {
+            if (latencyresults[i].latency < pingTH) {
+                break;
+            }
+            alerts.alert = true;
+            alerts.highlatency = true;
         }
-        alerts.alert = true;
-        alerts.highlatency = true;
+    } catch (err) {
+        console.log("Latency not found");
     }
 
     // Check for packetloss loss
-    for (let i = 0; i < 2; i++) {
-        if (latencyresults[i].loss <= lossTH + 1) {
-            break;
-        }
+    try {
+        for (let i = 0; i < 2; i++) {
+            if (latencyresults[i].loss <= lossTH + 1) {
+                break;
+            }
 
-        alerts.alert = true;
-        alerts.loss = true;
+            alerts.alert = true;
+            alerts.loss = true;
+        }
+    } catch (err) {
+        console.log("No packetloss");
     }
 
     res.status(200).json({ results: alerts });
