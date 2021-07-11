@@ -25,6 +25,9 @@ export default function Login() {
             .then((r) => {
                 console.log(r.result);
                 cookie.set("logincookie", r.result, { maxAge: 600 });
+            })
+            .then(() => {
+                location.replace("/Overview");
             });
     };
 
@@ -41,7 +44,7 @@ export default function Login() {
                     />
                     <br />
                     <input
-                        type="text"
+                        password="text"
                         className={Styles.input}
                         placeholder="password"
                         onChange={changePassword}
