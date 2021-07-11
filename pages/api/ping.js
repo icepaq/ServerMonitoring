@@ -42,5 +42,7 @@ export default async (req, res) => {
         });
     });
 
+    await client.close();
+
     res.status(200).json({ results: results });
 };

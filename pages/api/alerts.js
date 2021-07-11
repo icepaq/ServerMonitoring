@@ -91,5 +91,7 @@ export default async (req, res) => {
         console.log("No packetloss");
     }
 
+    await client.close();
+
     res.status(200).json({ results: alerts });
 };

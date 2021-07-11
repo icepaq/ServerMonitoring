@@ -17,7 +17,7 @@ export async function register(server, key) {
         key: key,
     });
 
-    client.close();
+    await client.close();
 
     return r;
 }

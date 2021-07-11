@@ -17,5 +17,7 @@ export async function getServer(server) {
 
     const r = await collection.findOne({ serverip: server });
 
+    await client.close();
+
     return r;
 }

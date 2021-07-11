@@ -22,7 +22,7 @@ export async function check(email) {
         results.push(r);
     });
 
-    client.close();
+    await client.close();
 
     if (r == undefined) {
         return false;

@@ -15,7 +15,7 @@ export async function check(server) {
     const collection = client.db("serverpanel").collection("keys");
 
     const r = await collection.findOne({ server: server });
-    client.close();
+    await client.close();
     console.log(r);
 
     if (r == undefined) {

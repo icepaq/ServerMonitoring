@@ -35,6 +35,7 @@ export default async (req, res) => {
         results.push({ date: result.date, results: result.results });
     });
 
+    await client.close();
     console.log(results.results);
     res.status(200).json({ results: results });
 };

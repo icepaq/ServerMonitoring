@@ -30,6 +30,8 @@ module.exports = class Authenticate {
             console.log(err);
         }
 
+        await client.close();
+
         return token;
     }
 };

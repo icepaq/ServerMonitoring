@@ -35,5 +35,7 @@ export default async (req, res) => {
 
     const r = await collection.findOne({ email: email });
 
+    await client.close();
+
     res.status(200).json({ result: r });
 };

@@ -1,8 +1,12 @@
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://my_username:my_password@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const MongoClient = require("mongodb").MongoClient;
+const uri =
+    "mongodb+srv://my_username:my_password@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 export async function main(serverip, servername, email, ping, loss) {
-    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    const client = new MongoClient(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
 
     try {
         await client.connect();
@@ -13,16 +17,16 @@ export async function main(serverip, servername, email, ping, loss) {
             serverip: serverip,
             name: servername,
             email: email,
-            ping: ping,  // latency and packet loss threshold
-            loss: loss
+            ping: ping, // latency and packet loss threshold
+            loss: loss,
         });
 
-        client.close();
-        
+        await client.close();
+
         return r;
-    
-    }
-    catch(err) {
+    } catch (err) {
         return err;
+    } finally {
+        await client.close();
     }
 }
