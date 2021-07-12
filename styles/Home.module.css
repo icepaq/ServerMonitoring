@@ -93,7 +93,7 @@
 }
 
 .graph {
-    width: 900px;
+    width: 1000px;
     height: 350px;
 
     margin-top: 300px;
@@ -116,4 +116,10 @@
     font-size: 16px;
     padding: 10px;
     margin-top: -40px;
+}
+
+.LineWrapper {
+    width: 800px;
+    height: 350px;
+    margin: 20px;
 }
