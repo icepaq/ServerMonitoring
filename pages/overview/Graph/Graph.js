@@ -57,17 +57,19 @@ export default class Graph extends React.Component {
     }
 
     render() {
-        const LastUpdate = Date.now().toLocaleString();
+        let LastUpdate = new Date();
+        LastUpdate = LastUpdate.toUTCString();
 
         const data = {
             labels: this.state.graphLabel,
             options: {
-                maintainAspectRatio: false,
-                height: 100,
+                legend: {
+                    display: false,
+                },
             },
             datasets: [
                 {
-                    label: "# of Votes",
+                    label: "Latency",
                     data: this.state.graphData,
                     backgroundColor: [
                         "rgba(255, 99, 132, 0.2)",
