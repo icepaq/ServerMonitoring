@@ -6,4 +6,5 @@
       "editor.formatOnSave": true
     },
     "powermode.enabled": false,
-    "powermode.presets": "particles" }
+    "powermode.presets": "particles"
+}

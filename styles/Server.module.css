@@ -82,3 +82,28 @@
 .tableData {
     padding: 10px;
 }
+
+.addServerButton {
+    margin-top: 10px;
+    background-color: rgb(14, 14, 14);
+    text-align: center;
+    border-radius: 5px;
+    cursor: default;
+
+    width: 100px;
+    padding: 10px 20px;
+
+    transition: 0.3s;
+}
+
+.actionsButton {
+    background-color: rgb(14, 14, 14);
+    text-align: center;
+    border-radius: 5px;
+    cursor: default;
+
+    width: 100px;
+    padding: 10px 20px;
+
+    transition: 0.3s;
+}

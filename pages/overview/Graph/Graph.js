@@ -66,6 +66,13 @@ export default class Graph extends React.Component {
                 legend: {
                     display: false,
                 },
+                scales: {
+                    xAxes: [
+                        {
+                            ticks: { min: 0 },
+                        },
+                    ],
+                },
             },
             datasets: [
                 {

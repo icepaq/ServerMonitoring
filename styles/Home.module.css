@@ -123,3 +123,15 @@
     height: 350px;
     margin: 20px;
 }
+
+.input {
+    width: 350px;
+    color: white;
+    background-color: #111111;
+    border-style: none;
+
+    padding: 10px;
+    margin-top: 10px;
+
+    border-radius: 3px;
+}

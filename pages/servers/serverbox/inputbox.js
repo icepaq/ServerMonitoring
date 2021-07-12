@@ -4,7 +4,7 @@ export default function ServerBox() {
     return (
         <input
             type="text"
-            className={Styles.inputBox}
+            className={Styles.input}
             placeholder="Filter servers"
         />
     );
