@@ -7,14 +7,12 @@ import { useState } from "react";
 export default function OverviewComponent(props) {
     const [ServerName, setServerName] = useState("Loading...");
 
-    console.log("overview");
-
     return (
         <div className={Styles.overviewComponent}>
             <Greeting />
             <InformationRow token={props.token} />
             <div className="graphWrapper">
-                <Graph token={props.token} ServerName={ServerName} />
+                <Graph token={props.token} />
             </div>
         </div>
     );

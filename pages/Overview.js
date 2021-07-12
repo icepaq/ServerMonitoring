@@ -10,8 +10,6 @@ export default function OverviewPage() {
     const token = cookie.get("logincookie");
     const router = useRouter();
 
-    console.log("Overview");
-
     if (token == undefined || token == "ERROR") {
         useEffect(() => {
             router.push("/Login");

@@ -18,6 +18,7 @@ export default class Graph extends React.Component {
         const cookie = new Cookies();
         const email = cookie.get("logincookieemail");
 
+        // Server's pinned graph
         fetch(
             "http://localhost:3000/api/pinnedservers?email=" +
                 email +
@@ -29,8 +30,6 @@ export default class Graph extends React.Component {
                 this.setState({
                     ServerName: r.result.server,
                 });
-
-                console.log(r.result.server);
             })
             .then(() => {
                 fetch(
@@ -53,22 +52,12 @@ export default class Graph extends React.Component {
                             graphData: tempData,
                             graphLabel: tempLabels,
                         });
-
-                        console.log(this.state.graphData);
-                        console.log(this.state.graphLabel);
                     });
             });
     }
 
     render() {
-        const LastUpdate = "14:23:01 Jul-09-2021";
-
-        /*
-        const [demo, setDemo] = useState();
-        const [graphData, setData] = useState([1, 2, 3, 5]);
-        const [label, setLabel] = useState([1, 2, 3, 4, 5]);
-        const [ServerName, setServerName] = useState();
-        */
+        const LastUpdate = Date.now().toLocaleString();
 
         const data = {
             labels: this.state.graphLabel,
