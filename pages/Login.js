@@ -45,7 +45,7 @@ export default function Login() {
                     />
                     <br />
                     <input
-                        password="text"
+                        type="password"
                         className={Styles.input}
                         placeholder="password"
                         onChange={changePassword}
