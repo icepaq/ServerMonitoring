@@ -17,9 +17,17 @@ export default function InformationRow(props) {
 
     return (
         <div className={Styles.informationRow}>
-            <Information number={alerts} title="Alerts" />
-            <Information number={serversUp} title="Servers Down" />
-            <Information number={servers} title="Total Servers" />
+            <Information number={alerts} title="Alerts" Link="/Alerts" />
+            <Information
+                number={serversUp}
+                title="Servers Down"
+                Link="/Alerts"
+            />
+            <Information
+                number={servers}
+                title="Total Servers"
+                Link="/Servers"
+            />
         </div>
     );
 }
