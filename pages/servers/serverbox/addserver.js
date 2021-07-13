@@ -1,4 +1,5 @@
 import Styles from "../../../styles/Server.module.css";
+import Link from "next/link";
 
 export default function ServerBox() {
     return (
