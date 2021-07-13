@@ -26,8 +26,7 @@ module.exports = class Authenticate {
 
             r = await collection.insertOne(query);
         } catch (err) {
-            console.log("Something went wrong");
-            console.log(err);
+            console.log("getToken: Error");
         }
 
         await client.close();

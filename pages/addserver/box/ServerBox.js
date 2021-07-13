@@ -8,7 +8,6 @@ export default function ServerBox() {
     const router = useRouter();
 
     let email = cookie.get("logincookieemail");
-    console.log("Email: " + email);
     let key = cookie.get("logincookie");
 
     let serverName;
@@ -44,7 +43,7 @@ export default function ServerBox() {
 
     const addserver = () => {
         let urlString =
-            "/api/addserver" +
+            "http://localhost:3000/api/addserver" +
             "?email=" +
             email +
             "&key=" +
@@ -61,7 +60,6 @@ export default function ServerBox() {
             cpu +
             "&ramthreshold=" +
             ram;
-        console.log(urlString);
         fetch(urlString).then(() => router.push("/Servers"));
     };
 

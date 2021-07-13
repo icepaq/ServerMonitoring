@@ -1,6 +1,3 @@
-const checkToken = require("./authenticator/modules/checkToken.js");
-import * as getEmail from "./authenticator/modules/getServer.js";
-
 const MongoClient = require("mongodb").MongoClient;
 const uri =
     "mongodb+srv://my_username:my_password@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -10,16 +7,7 @@ export default async (req, res) => {
     const server = req.query.server;
     const key = req.query.key;
 
-    const check = new checkToken(server);
-
-    const key_email = await check.run(key);
-    const server_email = await getEmail.getServer(server);
-
-    if (key_email.email != server_email.email) {
-        console.log();
-        res.status(200).json({ results: "alerts: AUTHENTICATION FAILED" });
-        return;
-    }
+    /* IMPORTANT ADD AUTHENTICATION BACK */
 
     const client = new MongoClient(uri, {
         useNewUrlParser: true,
@@ -28,6 +16,7 @@ export default async (req, res) => {
     await client.connect();
 
     const thresholds = await TH.main(server);
+
     const pingTH = thresholds.ping;
     const lossTH = thresholds.loss;
 

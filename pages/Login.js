@@ -17,9 +17,11 @@ export default function Login() {
     };
 
     const login = () => {
-        console.log("Attempting Login");
         fetch(
-            "/api/authenticator/login?email=" + email + "&password=" + password
+            "http://localhost:3000/api/authenticator/login?email=" +
+                email +
+                "&password=" +
+                password
         )
             .then((res) => res.json())
             .then((r) => {

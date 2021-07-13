@@ -15,8 +15,8 @@ export default async (req, res) => {
     const server_email = await getEmail.getServer(server);
 
     if (key_email.email != server_email.email) {
-        console.log();
-        res.status(200).json({ results: "ping: AUTHENTICATION FAILED" });
+        console.log("Ping Authentication Failed");
+        res.status(200).json({ results: "AUTHENTICATION FAILED" });
         return;
     }
 

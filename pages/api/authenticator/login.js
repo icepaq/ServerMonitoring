@@ -14,12 +14,10 @@ export default async function login(req, res) {
 
     if (await authenticate.run(username, password)) {
         // Check if username and password match records
-        console.log("Authenticated");
         let t = await getToken.run(username);
-        console.log(t);
         await res.status(200).json({ result: t }); // Passing email
     } else {
-        console.log("Authentication Failed");
+        console.log("Login Authentication Failed");
         res.status(200).json({ result: "ERROR" });
     }
 }

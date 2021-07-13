@@ -33,7 +33,8 @@ export default async (req, res) => {
             };
 
             result = await collection.insertOne(query);
-            console.log(result);
+        } catch (err) {
+            console.log("Signup Error");
         } finally {
             // Ensures that the client will close when you finish/error
             await client.close();

@@ -7,24 +7,38 @@ export default function InformationRow() {
     const [Alerts, setAlerts] = useState("");
     const [Servers, setServers] = useState("");
     const [ServersDown, setServersDown] = useState("");
+    const [Latency, setLatency] = useState("");
+    const [Packetloss, setPacketloss] = useState("");
 
     const cookie = new Cookies();
     const key = cookie.get("logincookie");
+    const email = cookie.get("logincookieemail");
 
-    fetch("/api/OverviewAPI?key=" + key)
+    /* fetch("http://localhost:3000/api/OverviewAPI?key=" + key)
         .then((res) => res.json())
         .then((r) => {
             setAlerts(r.alerts);
             setServers(r.servers);
             setServersDown(r.down);
         });
+*/
+    fetch(
+        "http://localhost:3000/api/alertscount?email=" + email + "&key=" + key
+    )
+        .then((res) => res.json())
+        .then((r) => {
+            setLatency(r.latency);
+            setPacketloss(r.packetloss);
+            setServersDown(r.down);
+            setAlerts(r.alerts);
+        });
 
     return (
         <div className={Styles.informationRow}>
             <Information number={Alerts} title="Alert" />
             <Information number={ServersDown} title="Server Down" />
-            <Information number="6" title="High Latency" />
-            <Information number="6" title="High Packetloss" />
+            <Information number={Latency} title="High Latency" />
+            <Information number={Packetloss} title="High Packetloss" />
         </div>
     );
 }

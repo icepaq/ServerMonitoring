@@ -13,6 +13,5 @@ export async function pinserver(server, email) {
     const collection = client.db("serverpanel").collection("pins");
 
     await collection.deleteMany({ email: email });
-    let done = await collection.insertOne({ server: server, email: email });
-    console.log(done);
+    await collection.insertOne({ server: server, email: email });
 }

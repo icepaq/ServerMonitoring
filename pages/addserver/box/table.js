@@ -9,14 +9,18 @@ export default function table() {
     const [tableData, updateTableData] = useState("Loading...");
 
     const remove = (e) => {
-        console.log(e.target.id);
-        fetch("/api/removeserver?server=" + e.target.id + "&key=" + key);
+        fetch(
+            "http://localhost:3000/api/removeserver?server=" +
+                e.target.id +
+                "&key=" +
+                key
+        );
     };
 
     const pinserver = (e) => {
         const server = e.target.id;
         fetch(
-            "/api/pinServer?server=" +
+            "http://localhost:3000/api/pinServer?server=" +
                 server +
                 "&key=" +
                 key +
@@ -26,7 +30,7 @@ export default function table() {
     };
 
     let temp = [];
-    fetch("/api/getServers?email=" + email + "&key=" + key)
+    fetch("http://localhost:3000/api/getServers?email=" + email + "&key=" + key)
         .then((res) => res.json())
         .then((r) => {
             for (let i = 0; i < r.result.length; i++) {

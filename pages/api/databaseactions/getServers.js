@@ -13,13 +13,12 @@ export async function check(email) {
     await client.connect();
 
     const collection = client.db("serverpanel").collection("servers");
-
     const r = collection.find({ email: email });
 
     let results = [];
 
-    await r.forEach((r) => {
-        results.push(r);
+    await r.forEach((re) => {
+        results.push(re);
     });
 
     await client.close();

@@ -10,18 +10,17 @@ export default async (req, res) => {
     const CHECK_EMAIL = new checkToken();
     const key_email = await CHECK_EMAIL.run(key);
 
-    console.log(key_email.email);
-    console.log(key);
+    try {
+        if (key_email.email != email) {
+            console.log(key_email.email);
+            console.log(key);
 
-    if (key === undefined || email === undefined) {
-        res.status(200).json({ result: "Wrong Key" });
+            res.status(200).json({ result: "Wrong Key" });
+            return;
+        }
+    } catch (err) {
+        console.error("Error");
         return;
-    }
-
-    console.log(key_email.email);
-    console.log(email);
-    if (key_email.email != email) {
-        res.status(200).json({ result: "Wrong Key" });
     }
 
     const client = new MongoClient(uri, {

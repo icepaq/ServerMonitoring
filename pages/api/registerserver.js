@@ -5,9 +5,6 @@ export default async (req, res) => {
     const key = req.query.key;
     const server = req.query.server;
 
-    console.log(server);
-    console.log(key);
-
     if (!key) {
         console.log("Key undefined");
         WithoutKey.register(server);

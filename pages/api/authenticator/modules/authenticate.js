@@ -1,6 +1,5 @@
 module.exports = class Authenticate {
     async run(email, password) {
-
         const { MongoClient } = require("mongodb");
 
         const uri =
@@ -15,27 +14,23 @@ module.exports = class Authenticate {
         try {
             await client.connect();
 
-            const db = client.db('serverpanel');
-            let collection = db.collection('users');
+            const db = client.db("serverpanel");
+            let collection = db.collection("users");
 
             let query = {
-                email: email
-            }
+                email: email,
+            };
             r = await collection.findOne(query);
-            console.log(query);
-            console.log(r);
 
-            if(r.password == password) {
+            if (r.password == password) {
                 check = true;
             }
-        }
-        catch(err) {
+        } catch (err) {
             console.log(err);
-        }
-        finally {
+        } finally {
             await client.close();
         }
 
         return check;
     }
-}
+};

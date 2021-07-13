@@ -16,7 +16,6 @@ export async function check(server) {
 
     const r = await collection.findOne({ server: server });
     await client.close();
-    console.log(r);
 
     if (r == undefined) {
         return false;

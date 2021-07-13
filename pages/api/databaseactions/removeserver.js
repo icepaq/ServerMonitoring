@@ -22,25 +22,20 @@ export async function remove(server) {
     // Keys
     collection = client.db("serverpanel").collection("keys");
     op = await collection.deleteMany({ server: server });
-    console.log("Deleted " + op.deletedCount + " documents");
 
     // Latency
     collection = client.db("serverpanel").collection("latency");
     op = await collection.deleteMany({ server: server });
-    console.log("Deleted " + op.deletedCount + " documents");
 
     // Packetloss
     collection = client.db("serverpanel").collection("packetloss");
     op = await collection.deleteMany({ server: server });
-    console.log("Deleted " + op.deletedCount + " documents");
 
     // Pin
     collection = client.db("serverpanel").collection("pins");
     op = await collection.deleteOne({ server: server });
-    console.log("Deleted " + op.deletedCount + " documents");
 
     // Server
     collection = client.db("serverpanel").collection("servers");
     op = await collection.deleteOne({ serverip: server });
-    console.log("Deleted " + op.deletedCount + " documents");
 }

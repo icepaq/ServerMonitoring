@@ -1,5 +1,4 @@
 module.exports = class CheckUser {
-
     async run(email) {
         const { MongoClient } = require("mongodb");
 
@@ -12,29 +11,24 @@ module.exports = class CheckUser {
 
         let r;
         try {
-
             await client.connect();
 
-            const database = client.db('serverpanel');
-            const collection = database.collection('users');
+            const database = client.db("serverpanel");
+            const collection = database.collection("users");
 
             let query = {
                 email: email,
             };
 
             r = await collection.countDocuments(query);
-
-            console.log(r);
-        }
-        finally {
+        } finally {
             await client.close();
         }
 
-        if( r > 0) {
+        if (r > 0) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
-} 
+};
