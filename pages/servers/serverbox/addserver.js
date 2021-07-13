@@ -1,5 +1,9 @@
 import Styles from "../../../styles/Server.module.css";
 
 export default function ServerBox() {
-    return <div className={Styles.addServerButton}>Add Server</div>;
+    return (
+        <Link href="/AddServer">
+            <div className={Styles.addServerButton}>Add Server</div>;
+        </Link>
+    );
 }
