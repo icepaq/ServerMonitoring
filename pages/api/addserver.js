@@ -28,7 +28,9 @@ export default async (req, res) => {
             req.query.servername,
             req.query.email,
             req.query.pingthreshold,
-            req.query.lossthreshold
+            req.query.lossthreshold,
+            req.query.cputhreshold,
+            req.query.ramthreshold
         ),
     });
 };
