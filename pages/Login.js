@@ -23,7 +23,6 @@ export default function Login() {
         )
             .then((res) => res.json())
             .then((r) => {
-                console.log(r.result);
                 cookie.set("logincookie", r.result, { maxAge: 600 });
                 cookie.set("logincookieemail", email, { maxAge: 600 });
             })

@@ -49,9 +49,16 @@ export default class Graph extends React.Component {
                         let tempData = [];
                         let tempLabels = [];
 
-                        for (let i = 0; i < 10; i++) {
-                            tempData.push(r.results[i].latency);
-                            tempLabels.push(r.results[i].datestring);
+                        try {
+                            for (let i = 0; i < 10; i++) {
+                                tempData.push(r.results[i].latency);
+                                tempLabels.push(r.results[i].datestring);
+                            }
+                        } catch (err) {
+                            this.setState({
+                                ServerName:
+                                    this.state.ServerName + " / No Data",
+                            });
                         }
 
                         this.setState({

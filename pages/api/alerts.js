@@ -17,7 +17,7 @@ export default async (req, res) => {
 
     if (key_email.email != server_email.email) {
         console.log();
-        res.status(200).json({ results: "AUTHENTICATION FAILED" });
+        res.status(200).json({ results: "alerts: AUTHENTICATION FAILED" });
         return;
     }
 

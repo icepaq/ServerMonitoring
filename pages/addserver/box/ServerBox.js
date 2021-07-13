@@ -8,6 +8,7 @@ export default function ServerBox() {
     const router = useRouter();
 
     let email = cookie.get("logincookieemail");
+    console.log("Email: " + email);
     let key = cookie.get("logincookie");
 
     let serverName;
@@ -41,30 +42,27 @@ export default function ServerBox() {
         ram = e.target.value;
     };
 
-    const addserver = async () => {
-        await fetch(
+    const addserver = () => {
+        let urlString =
             "http://localhost:3000/api/addserver" +
-                "?email=" +
-                email +
-                "&key=" +
-                key +
-                "&serverip=" +
-                IPAddress +
-                "&servername=" +
-                serverName +
-                "&email=" +
-                email +
-                "&pingthreshold=" +
-                latency +
-                "&lossthreshold=" +
-                packetloss +
-                "&cputhreshold=" +
-                cpu +
-                "&ramthreshold=" +
-                ram
-        );
-
-        router.push("/Servers");
+            "?email=" +
+            email +
+            "&key=" +
+            key +
+            "&serverip=" +
+            IPAddress +
+            "&servername=" +
+            serverName +
+            "&pingthreshold=" +
+            latency +
+            "&lossthreshold=" +
+            packetloss +
+            "&cputhreshold=" +
+            cpu +
+            "&ramthreshold=" +
+            ram;
+        console.log(urlString);
+        fetch(urlString).then(() => router.push("/Servers"));
     };
 
     return (

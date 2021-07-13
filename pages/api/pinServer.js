@@ -15,6 +15,8 @@ export default async (req, res) => {
     const server_email = await getEmail.getServer(server);
 
     if (key_email.email != server_email.email) {
+        console.log("pinServer: Authentication Failed");
+
         res.status(200).json({ results: "AUTHENTICATION FAILED" });
         return;
     }

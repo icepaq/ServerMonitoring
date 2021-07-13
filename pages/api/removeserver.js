@@ -21,7 +21,11 @@ export default async (req, res) => {
     const server_email = await getEmail.getServer(server);
 
     if (key_email.email != server_email.email) {
-        res.status(200).json({ results: "AUTHENTICATION FAILED" });
+        console.log("removeserver: AUTHENTICATION FAILED");
+
+        res.status(200).json({
+            results: "AUTHENTICATION FAILED",
+        });
         return;
     }
 

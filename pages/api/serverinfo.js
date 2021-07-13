@@ -11,7 +11,8 @@ export default async (req, res) => {
     const server_email = await GetServer.getServer(server);
 
     if (key_email.email != server_email.email) {
-        console.log();
+        console.log("serverinfo: AUTHENTICATION FAILED");
+
         res.status(200).json({ results: "AUTHENTICATION FAILED" });
         return;
     }

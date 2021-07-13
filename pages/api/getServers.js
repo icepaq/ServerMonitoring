@@ -6,7 +6,7 @@ export default async (req, res) => {
 
     const email = await C.run(req.query.key);
     if (email.email != req.query.email) {
-        res.status(200).json({ result: "AUTHENTICATION FAILED" });
+        res.status(200).json({ result: "Get Server: AUTHENTICATION FAILED" });
         return;
     }
 

@@ -9,7 +9,6 @@ export default function table() {
     const [tableData, updateTableData] = useState("Loading...");
 
     const remove = (e) => {
-        console.log(e.target.id);
         fetch(
             "http://localhost:3000/api/removeserver?server=" +
                 e.target.id +
