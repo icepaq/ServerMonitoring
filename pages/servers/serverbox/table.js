@@ -18,6 +18,18 @@ export default function table() {
         );
     };
 
+    const pinserver = (e) => {
+        const server = e.target.id;
+        fetch(
+            "http://localhost:3000/api/pinServer?server=" +
+                server +
+                "&key=" +
+                key +
+                "&email=" +
+                email
+        );
+    };
+
     let temp = [];
     fetch("http://localhost:3000/api/getServers?email=" + email + "&key=" + key)
         .then((res) => res.json())
@@ -36,6 +48,13 @@ export default function table() {
                                 onClick={remove}
                             >
                                 Delete
+                            </div>
+                            <div
+                                className={Styles.actionsButton}
+                                id={r.result[i].serverip}
+                                onClick={pinserver}
+                            >
+                                Pin Server
                             </div>
                         </td>
                     </tr>
