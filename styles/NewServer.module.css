@@ -1,0 +1,60 @@
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(253, 253, 253);
+    margin-left: 10px;
+}
+
+.form {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.input {
+    width: 300px;
+    background-color: #111111;
+
+    border-radius: 5px;
+
+    padding: 4px;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    border: 2px solid rgb(163, 163, 163); /* Here */
+
+    color: white;
+    font-size: 16px;
+}
+
+
+.longButton {
+    margin-left: 10px;
+    background-color: rgb(8, 8, 8);
+    text-align: center;
+    border-radius: 5px;
+    cursor: default;
+
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+
+    width: 300px;
+    padding: 10px 20px;
+
+    transition: 0.3s;
+}
+
+
+.longButton:hover {
+    background-color: rgb(12, 12, 12);
+}
+
+.background {
+    width: 390px;
+    height: 550px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(15, 15, 15);
+    margin-left: 20px;
+}
