@@ -27,9 +27,15 @@ export default class Graph extends React.Component {
         )
             .then((res) => res.json())
             .then((r) => {
-                this.setState({
-                    ServerName: r.result.server,
-                });
+                try {
+                    this.setState({
+                        ServerName: r.result.server,
+                    });
+                } catch (err) {
+                    this.setState({
+                        ServerName: "No pinned server.",
+                    });
+                }
             })
             .then(() => {
                 fetch(
@@ -58,7 +64,7 @@ export default class Graph extends React.Component {
 
     render() {
         let LastUpdate = new Date();
-        LastUpdate = LastUpdate.toUTCString();
+        LastUpdate = LastUpdate.toLocaleString();
 
         const data = {
             labels: this.state.graphLabel,
