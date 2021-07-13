@@ -29,7 +29,12 @@ export default async (req, res) => {
                 key
         )
             .then((res) => res.json())
-            .then((r) => console.log(r.results));
+            .then((r) => {
+                console.log(r);
+                if (r.results.alert == true) {
+                    alerts += 1;
+                }
+            });
     }
 
     // Get pinned server
