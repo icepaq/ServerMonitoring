@@ -11,7 +11,7 @@ export default function InformationRow() {
     const cookie = new Cookies();
     const key = cookie.get("logincookie");
 
-    fetch("http://localhost:3000/api/OverviewAPI?key=" + key)
+    fetch("/api/OverviewAPI?key=" + key)
         .then((res) => res.json())
         .then((r) => {
             setAlerts(r.alerts);

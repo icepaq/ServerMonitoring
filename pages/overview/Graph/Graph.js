@@ -19,12 +19,7 @@ export default class Graph extends React.Component {
         const email = cookie.get("logincookieemail");
 
         // Server's pinned graph
-        fetch(
-            "http://localhost:3000/api/pinnedservers?email=" +
-                email +
-                "&key=" +
-                this.state.token
-        )
+        fetch("/api/pinnedservers?email=" + email + "&key=" + this.state.token)
             .then((res) => res.json())
             .then((r) => {
                 try {
@@ -39,7 +34,7 @@ export default class Graph extends React.Component {
             })
             .then(() => {
                 fetch(
-                    "http://localhost:3000/api/ping?server=" +
+                    "/api/ping?server=" +
                         this.state.ServerName +
                         "&key=" +
                         this.state.token
