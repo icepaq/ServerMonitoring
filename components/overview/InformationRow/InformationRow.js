@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Styles from "../../../styles/Home.module.css";
 import Information from "./information.js";
 
@@ -7,16 +7,24 @@ export default function InformationRow(props) {
     const [serversUp, setServersUp] = useState("0");
     const [servers, setServers] = useState("0");
 
-    fetch("http://localhost/api/OverviewAPI?key=" + props.token)
-        .then((res) => res.json())
-        .then((r) => {
-            setAlerts(r.alerts);
-            setServers(r.servers);
-            setServersUp(r.down);
-        })
-        .catch((err) => {
-            console.log("Fetch Error");
-        });
+    useEffect(() => {
+        let isSubscribed = true;
+
+        fetch("http://localhost/api/OverviewAPI?key=" + props.token)
+            .then((res) => res.json())
+            .then((r) => {
+                if (isSubscribed) {
+                    setAlerts(r.alerts);
+                    setServers(r.servers);
+                    setServersUp(r.down);
+                }
+            })
+            .catch((err) => {
+                console.log("Fetch Error");
+            });
+
+        return () => (isSubscribed = false);
+    });
 
     return (
         <div className={Styles.informationRow}>
