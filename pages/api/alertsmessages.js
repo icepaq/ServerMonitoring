@@ -7,7 +7,7 @@ export default async (req, res) => {
 
     // Get Servers
     await fetch(
-        "http://localhost:3000/api/getServers?email=" + email + "&key=" + key
+        "http://localhost/api/getServers?email=" + email + "&key=" + key
     )
         .then((res) => res.json())
         .then((r) => {
@@ -20,7 +20,7 @@ export default async (req, res) => {
     let d = new Date();
     for (let i = 0; i < servers.length; i++) {
         await fetch(
-            "http://localhost:3000/api/alerts?server=" +
+            "http://localhost/api/alerts?server=" +
                 servers[i].serverip +
                 "&key=" +
                 key

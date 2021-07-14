@@ -9,7 +9,7 @@ export default async (req, res) => {
     let packetloss = 0;
     // Get servers
     await fetch(
-        "http://localhost:3000/api/getServers?email=" + email + "&key=" + key
+        "http://localhost/api/getServers?email=" + email + "&key=" + key
     )
         .then((res) => res.json())
         .then((r) => {
@@ -21,10 +21,7 @@ export default async (req, res) => {
     // Increment variables accordingly
     for (let i = 0; i < servers.length; i++) {
         await fetch(
-            "http://localhost:3000/api/alerts?server=" +
-                servers[i] +
-                "&key=" +
-                key
+            "http://localhost/api/alerts?server=" + servers[i] + "&key=" + key
         )
             .then((res) => res.json())
             .then((r) => {

@@ -10,7 +10,7 @@ export default function table() {
 
     const remove = (e) => {
         fetch(
-            "http://localhost:3000/api/removeserver?server=" +
+            "http://localhost/api/removeserver?server=" +
                 e.target.id +
                 "&key=" +
                 key
@@ -20,7 +20,7 @@ export default function table() {
     const pinserver = (e) => {
         const server = e.target.id;
         fetch(
-            "http://localhost:3000/api/pinServer?server=" +
+            "http://localhost/api/pinServer?server=" +
                 server +
                 "&key=" +
                 key +
@@ -30,7 +30,7 @@ export default function table() {
     };
 
     let temp = [];
-    fetch("http://localhost:3000/api/getServers?email=" + email + "&key=" + key)
+    fetch("http://localhost/api/getServers?email=" + email + "&key=" + key)
         .then((res) => res.json())
         .then((r) => {
             for (let i = 0; i < r.result.length; i++) {

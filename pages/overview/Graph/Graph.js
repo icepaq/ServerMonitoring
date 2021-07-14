@@ -20,7 +20,7 @@ export default class Graph extends React.Component {
 
         // Server's pinned graph
         fetch(
-            "http://localhost:3000/api/pinnedservers?email=" +
+            "http://localhost/api/pinnedservers?email=" +
                 email +
                 "&key=" +
                 this.state.token
@@ -39,7 +39,7 @@ export default class Graph extends React.Component {
             })
             .then(() => {
                 fetch(
-                    "http://localhost:3000/api/ping?server=" +
+                    "http://localhost/api/ping?server=" +
                         this.state.ServerName +
                         "&key=" +
                         this.state.token

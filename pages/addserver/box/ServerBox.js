@@ -43,7 +43,7 @@ export default function ServerBox() {
 
     const addserver = () => {
         let urlString =
-            "http://localhost:3000/api/addserver" +
+            "http://localhost/api/addserver" +
             "?email=" +
             email +
             "&key=" +

@@ -14,7 +14,7 @@ export default function InformationRow() {
     const key = cookie.get("logincookie");
     const email = cookie.get("logincookieemail");
 
-    /* fetch("http://localhost:3000/api/OverviewAPI?key=" + key)
+    /* fetch("http://localhost/api/OverviewAPI?key=" + key)
         .then((res) => res.json())
         .then((r) => {
             setAlerts(r.alerts);
@@ -22,9 +22,7 @@ export default function InformationRow() {
             setServersDown(r.down);
         });
 */
-    fetch(
-        "http://localhost:3000/api/alertscount?email=" + email + "&key=" + key
-    )
+    fetch("http://localhost/api/alertscount?email=" + email + "&key=" + key)
         .then((res) => res.json())
         .then((r) => {
             setLatency(r.latency);

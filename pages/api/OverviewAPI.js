@@ -9,7 +9,7 @@ export default async (req, res) => {
     let pin;
 
     // Get email address the token is associated with
-    await fetch("http://localhost:3000/api/authenticator/token?key=" + key)
+    await fetch("http://localhost/api/authenticator/token?key=" + key)
         .then((res) => res.json())
         .then((r) => {
             email = r.key.email;
@@ -22,7 +22,7 @@ export default async (req, res) => {
     for (let i = 0; i < servers.length; i++) {
         //let string = '/api/alerts?server=' + server + '&'
         await fetch(
-            "http://localhost:3000/api/alerts?server=" +
+            "http://localhost/api/alerts?server=" +
                 servers[i].serverip +
                 "&key=" +
                 key
@@ -37,7 +37,7 @@ export default async (req, res) => {
 
     // Get pinned server
     await fetch(
-        "http://localhost:3000/api/pinnedservers?email=" + email + "&key=" + key
+        "http://localhost/api/pinnedservers?email=" + email + "&key=" + key
     )
         .then((res) => res.json())
         .then((r) => {

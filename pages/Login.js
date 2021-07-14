@@ -18,7 +18,7 @@ export default function Login() {
 
     const login = () => {
         fetch(
-            "http://localhost:3000/api/authenticator/login?email=" +
+            "http://localhost/api/authenticator/login?email=" +
                 email +
                 "&password=" +
                 password
