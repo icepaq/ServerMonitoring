@@ -1,4 +1,5 @@
 import * as NoEmail from "./databaseactions/updateaccountnoemail.js";
+import * as EmailRef from "./databaseactions/updateemailreferences";
 const checkToken = require("./authenticator/modules/checkToken.js");
 
 export default async (req, res) => {
@@ -48,7 +49,8 @@ export default async (req, res) => {
         // Update email in keys
         // Update email in pins
         // Update email in servers
-        // Update email in users
+        await NoEmail.update(email, newEmail, name, company, role, country);
+        await EmailRef.update(email, newEmail);
     }
 
     res.status(200).json({ results: r });

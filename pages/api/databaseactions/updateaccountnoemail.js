@@ -1,6 +1,6 @@
 const MongoClient = require("mongodb").MongoClient;
 
-export async function update(email, name, company, role, country) {
+export async function update(email, newEmail, name, company, role, country) {
     const uri =
         "mongodb+srv://my_username:my_password@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
@@ -22,7 +22,12 @@ export async function update(email, name, company, role, country) {
     };
 
     const update = {
-        $set: { name: name, company: company, role: role, country: country },
+        $set: {
+            name: name,
+            company: company,
+            role: role,
+            country: country,
+        },
     };
 
     let r = await collection.updateOne(filter, update, options);
