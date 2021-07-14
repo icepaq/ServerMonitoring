@@ -43,7 +43,7 @@ export default function ServerBox() {
 
     const addserver = () => {
         let urlString =
-            "http://localhost/api/addserver" +
+            "https://serverpanel.controlserverhosting.com/api/addserver" +
             "?email=" +
             email +
             "&key=" +
