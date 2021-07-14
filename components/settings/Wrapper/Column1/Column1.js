@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import Styles from "../../../../styles/Settings.module.css";
 import Cookies from "universal-cookie";
+import { useRouter, userRouter } from "next/router";
 
 export default function OverviewComponent() {
     let name, email, company, role, country;
+
+    let router = useRouter();
 
     const [NAME, SETNAME] = useState();
     const [EMAIL, SETEMAIL] = useState();
@@ -66,9 +69,15 @@ export default function OverviewComponent() {
             "&newemail=" +
             email;
         console.log(link);
-        fetch(link).catch((err) => {
-            console.error("Fetch Error");
-        });
+        fetch(link)
+            .then(() => {
+                cookie.remove("logincookie");
+                cookie.remove("loginemailcookie");
+                router.push("/Login");
+            })
+            .catch((err) => {
+                console.error("Fetch Error");
+            });
     };
 
     return (
