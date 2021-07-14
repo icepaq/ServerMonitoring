@@ -18,7 +18,7 @@ export default function Login() {
 
     const login = () => {
         fetch(
-            "https://serverpanel.controlserverhosting.com/api/authenticator/login?email=" +
+            "http://localhost/api/authenticator/login?email=" +
                 email +
                 "&password=" +
                 password

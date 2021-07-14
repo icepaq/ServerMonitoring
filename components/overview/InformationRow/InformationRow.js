@@ -7,10 +7,7 @@ export default function InformationRow(props) {
     const [serversUp, setServersUp] = useState("0");
     const [servers, setServers] = useState("0");
 
-    fetch(
-        "https://serverpanel.controlserverhosting.com/api/OverviewAPI?key=" +
-            props.token
-    )
+    fetch("http://localhost/api/OverviewAPI?key=" + props.token)
         .then((res) => res.json())
         .then((r) => {
             setAlerts(r.alerts);
