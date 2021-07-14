@@ -14,7 +14,9 @@ export default function table() {
                 e.target.id +
                 "&key=" +
                 key
-        );
+        ).catch((err) => {
+            console.log("Fetch Error");
+        });
     };
 
     const pinserver = (e) => {
@@ -26,7 +28,9 @@ export default function table() {
                 key +
                 "&email=" +
                 email
-        );
+        ).catch((err) => {
+            console.log("Fetch Error");
+        });
     };
 
     let temp = [];
@@ -60,6 +64,9 @@ export default function table() {
                 );
             }
             updateTableData(temp);
+        })
+        .catch((err) => {
+            console.log("Fetch Error");
         });
     return (
         <table className={Styles.table}>

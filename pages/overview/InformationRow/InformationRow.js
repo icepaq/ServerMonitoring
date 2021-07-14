@@ -13,6 +13,9 @@ export default function InformationRow(props) {
             setAlerts(r.alerts);
             setServers(r.servers);
             setServersUp(r.down);
+        })
+        .catch((err) => {
+            console.log("Fetch Error");
         });
 
     return (

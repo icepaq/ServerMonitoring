@@ -66,6 +66,9 @@ export default class Graph extends React.Component {
                             graphLabel: tempLabels,
                         });
                     });
+            })
+            .catch((err) => {
+                console.log("Fetch Error");
             });
     }
 

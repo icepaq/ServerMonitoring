@@ -14,14 +14,6 @@ export default function InformationRow() {
     const key = cookie.get("logincookie");
     const email = cookie.get("logincookieemail");
 
-    /* fetch("http://localhost/api/OverviewAPI?key=" + key)
-        .then((res) => res.json())
-        .then((r) => {
-            setAlerts(r.alerts);
-            setServers(r.servers);
-            setServersDown(r.down);
-        });
-*/
     fetch("http://localhost/api/alertscount?email=" + email + "&key=" + key)
         .then((res) => res.json())
         .then((r) => {
@@ -29,6 +21,9 @@ export default function InformationRow() {
             setPacketloss(r.packetloss);
             setServersDown(r.down);
             setAlerts(r.alerts);
+        })
+        .catch((err) => {
+            console.log("Fetch Error");
         });
 
     return (

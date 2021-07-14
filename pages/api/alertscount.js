@@ -16,6 +16,9 @@ export default async (req, res) => {
             for (let i = 0; i < r.result.length; i++) {
                 servers.push(r.result[i].serverip);
             }
+        })
+        .catch((err) => {
+            console.log("Fetch Error");
         });
     // For each server, check alerts
     // Increment variables accordingly
@@ -37,6 +40,9 @@ export default async (req, res) => {
                 if (r.results.down || r.results.highlatency || r.results.loss) {
                     alerts += 1;
                 }
+            })
+            .catch((err) => {
+                console.log("Fetch Error");
             });
     }
 

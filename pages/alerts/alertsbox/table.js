@@ -33,6 +33,9 @@ export default function table() {
                 temp.push(jsx);
             }
             setData(temp);
+        })
+        .catch((err) => {
+            console.log("Fetch Error");
         });
 
     let tableData = (

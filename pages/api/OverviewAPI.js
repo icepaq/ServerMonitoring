@@ -13,6 +13,9 @@ export default async (req, res) => {
         .then((res) => res.json())
         .then((r) => {
             email = r.key.email;
+        })
+        .catch((err) => {
+            console.log("Fetch Error");
         });
 
     // Get all servers associated with email address
@@ -32,6 +35,9 @@ export default async (req, res) => {
                 if (r.results.alert == true) {
                     alerts += 1;
                 }
+            })
+            .catch((err) => {
+                console.log("Fetch Error");
             });
     }
 
@@ -42,6 +48,9 @@ export default async (req, res) => {
         .then((res) => res.json())
         .then((r) => {
             pin = r.result;
+        })
+        .catch((err) => {
+            console.log("Fetch Error");
         });
 
     res.status(200).json({

@@ -53,5 +53,8 @@ export default async (req, res) => {
         .then((r) => {
             let final = RAM.ram(r);
             res.status(200).json({ result: final });
+        })
+        .catch((err) => {
+            console.log("Fetch Error");
         });
 };

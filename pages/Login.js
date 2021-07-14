@@ -30,6 +30,9 @@ export default function Login() {
             })
             .then(() => {
                 location.replace("/Overview");
+            })
+            .catch((err) => {
+                console.log("Fetch Error");
             });
     };
 

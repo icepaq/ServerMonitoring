@@ -14,6 +14,9 @@ export default async (req, res) => {
             for (let i = 0; i < r.result.length; i++) {
                 servers.push(r.result[i]);
             }
+        })
+        .catch((err) => {
+            console.log("Fetch Error");
         });
 
     // Generate Alert Messages
@@ -51,6 +54,9 @@ export default async (req, res) => {
                         date: d.toLocaleString(),
                     });
                 }
+            })
+            .catch((err) => {
+                console.log("Fetch Error");
             });
     }
 

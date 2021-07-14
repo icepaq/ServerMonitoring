@@ -37,6 +37,9 @@ export default async (req, res) => {
         .then((re) => re.json())
         .then((re) => {
             pid = re.pid;
+        })
+        .catch((err) => {
+            console.log("Fetch Error");
         });
 
     await sleep(2000);
@@ -52,5 +55,8 @@ export default async (req, res) => {
         .then((r) => r.json())
         .then((r) => {
             res.status(200).json({ result: r.content[0].data });
+        })
+        .catch((err) => {
+            console.log("Fetch Error");
         });
 };

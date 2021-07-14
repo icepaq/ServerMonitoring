@@ -60,7 +60,11 @@ export default function ServerBox() {
             cpu +
             "&ramthreshold=" +
             ram;
-        fetch(urlString).then(() => router.push("/Servers"));
+        fetch(urlString)
+            .then(() => router.push("/Servers"))
+            .catch((err) => {
+                console.log("Fetch Error");
+            });
     };
 
     return (
