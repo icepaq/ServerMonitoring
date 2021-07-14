@@ -1,7 +1,32 @@
+import { useEffect, useState } from "react";
 import Styles from "../../../../styles/Settings.module.css";
+import Cookies from "universal-cookie";
 
 export default function OverviewComponent() {
     let name, email, company, role, country;
+
+    const [NAME, SETNAME] = useState();
+    const [EMAIL, SETEMAIL] = useState();
+    const [COMPANY, SETCOMPANY] = useState();
+    const [ROLE, SETROLE] = useState();
+    const [COUNTRY, SETCOUNTRY] = useState();
+
+    const cookie = new Cookies();
+    const _email = cookie.get("logincookieemail");
+    const _key = cookie.get("logincookie");
+    email = cookie.get("logincookieemail");
+
+    fetch("http://localhost/api/getUserConfig?email=" + _email + "&key=" + _key)
+        .then((res) => res.json())
+        .then((r) => {
+            console.log(r);
+            r = r.results;
+            if (r.name != "undefined") SETNAME(r.name);
+            if (r.email != "undefined") SETEMAIL(r.email);
+            if (r.company != "undefined") SETCOMPANY(r.company);
+            if (r.role != "undefined") SETROLE(r.role);
+            if (r.country != "undefined") SETCOUNTRY(r.country);
+        });
 
     const setName = (e) => {
         name = e.target.value;
@@ -23,20 +48,27 @@ export default function OverviewComponent() {
         country = e.target.value;
     };
 
-    const saveChanges = (e) => {
-        fetch(
-            "http://localhost:3000/api/updateAccount" +
-                "?key=" +
-                key +
-                "&email=" +
-                email +
-                "&company=" +
-                company +
-                "&role=" +
-                role +
-                "&country=" +
-                country
-        );
+    const saveChanges = () => {
+        let link =
+            "http://localhost/api/updateAccount" +
+            "?key=" +
+            _key +
+            "&name=" +
+            name +
+            "&email=" +
+            _email +
+            "&company=" +
+            company +
+            "&role=" +
+            role +
+            "&country=" +
+            country +
+            "&newemail=" +
+            email;
+        console.log(link);
+        fetch(link).catch((err) => {
+            console.error("Fetch Error");
+        });
     };
 
     return (
@@ -49,6 +81,7 @@ export default function OverviewComponent() {
                         className={Styles.input}
                         type="text"
                         onChange={setName}
+                        defaultValue={NAME}
                     />
                 </div>
                 <div className={Styles.form}>
@@ -57,6 +90,7 @@ export default function OverviewComponent() {
                         className={Styles.input}
                         type="text"
                         onChange={setEmail}
+                        defaultValue={EMAIL}
                     />
                 </div>
                 <div className={Styles.form}>
@@ -65,6 +99,7 @@ export default function OverviewComponent() {
                         className={Styles.input}
                         type="text"
                         onChange={setCompany}
+                        defaultValue={COMPANY}
                     />
                 </div>
                 <div className={Styles.form}>
@@ -73,6 +108,7 @@ export default function OverviewComponent() {
                         className={Styles.input}
                         type="text"
                         onChange={setRole}
+                        defaultValue={ROLE}
                     />
                 </div>
                 <div className={Styles.form}>
@@ -81,6 +117,7 @@ export default function OverviewComponent() {
                         className={Styles.input}
                         type="text"
                         onChange={setCountry}
+                        defaultValue={COUNTRY}
                     />
                 </div>
                 <div className={Styles.longButton} onClick={saveChanges}>
