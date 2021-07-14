@@ -1,9 +1,9 @@
-import Sidebar from "./sidebar/Sidebar.js";
+import Sidebar from "../components/sidebar/Sidebar.js";
 import Cookies from "universal-cookie";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
-import AddServer from "./addserver/AddServer.js";
+import AddServer from "../components/addserver/AddServer.js";
 
 export default function AddServerPage() {
     const cookie = new Cookies();

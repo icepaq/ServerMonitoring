@@ -1,5 +1,5 @@
-import Sidebar from "./sidebar/Sidebar.js";
-import Settings from "./settings/Settings.js";
+import Sidebar from "../components/sidebar/Sidebar.js";
+import Settings from "../components/settings/Settings.js";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Cookies from "universal-cookie";

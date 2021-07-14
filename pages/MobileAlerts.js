@@ -1,5 +1,5 @@
-import Sidebar from "./sidebar/Sidebar.js";
-import MobileAlerts from "./mobilealerts/MobileAlerts.js";
+import Sidebar from "../components/sidebar/Sidebar.js";
+import MobileAlerts from "../components/mobilealerts/MobileAlerts.js";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Cookies from "universal-cookie";

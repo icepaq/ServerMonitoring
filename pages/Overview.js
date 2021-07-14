@@ -1,5 +1,5 @@
-import Sidebar from "./sidebar/Sidebar.js";
-import Overview from "./overview/overview.js";
+import Sidebar from "../components/sidebar/Sidebar.js";
+import Overview from "../components/overview/overview.js";
 
 import { useEffect } from "react";
 import { useRouter } from "next/router";

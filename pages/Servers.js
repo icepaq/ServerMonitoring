@@ -1,5 +1,5 @@
-import Sidebar from "./sidebar/Sidebar.js";
-import Server from "./servers/Servers.js";
+import Sidebar from "../components/sidebar/Sidebar.js";
+import Server from "../components/servers/Servers.js";
 import Cookies from "universal-cookie";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
