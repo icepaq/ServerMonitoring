@@ -16,8 +16,16 @@ export default function Login() {
     }
 
     const signup = () => {
-        fetch("http://localhost/api/authenticator/signup?email=" + email + "&password=" + password)
-        .then(() => { router.push("/Login") } );
+        fetch("http://localhost/api/authenticator/emailexists?email=" + email)
+            .then((r) => r.json())
+            .then((r) => {
+                if (r.result == "EMAIL_EXISTS") {
+                    alert("Email Exists");
+                    return;
+                }
+                fetch("http://localhost/api/authenticator/signup?email=" + email + "&password=" + password)
+                .then(() => { router.push("/Login") } );
+            })
     };
 
     return (

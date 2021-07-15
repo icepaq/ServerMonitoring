@@ -52,31 +52,41 @@ export default function OverviewComponent() {
     };
 
     const saveChanges = () => {
-        let link =
-            "http://localhost/api/updateAccount" +
-            "?key=" +
-            _key +
-            "&name=" +
-            name +
-            "&email=" +
-            _email +
-            "&company=" +
-            company +
-            "&role=" +
-            role +
-            "&country=" +
-            country +
-            "&newemail=" +
-            email;
-        console.log(link);
-        fetch(link)
-            .then(() => {
-                cookie.remove("logincookie");
-                cookie.remove("loginemailcookie");
-                router.push("/Login");
-            })
-            .catch((err) => {
-                console.error("Fetch Error");
+        // Check if email exists
+        fetch("http://localhost/api/authenticator/emailexists?email=" + email)
+            .then((res) => res.json())
+            .then((r) => {
+                if (r.result == "EMAIL_EXISTS") {
+                    alert("Email Exists");
+                    return;
+                }
+                let link =
+                    "http://localhost/api/updateAccount" +
+                    "?key=" +
+                    _key +
+                    "&name=" +
+                    name +
+                    "&email=" +
+                    _email +
+                    "&company=" +
+                    company +
+                    "&role=" +
+                    role +
+                    "&country=" +
+                    country +
+                    "&newemail=" +
+                    email;
+
+                console.log(link);
+                fetch(link)
+                    .then(() => {
+                        cookie.remove("logincookie");
+                        cookie.remove("loginemailcookie");
+                        router.push("/Login");
+                    })
+                    .catch((err) => {
+                        console.error("Fetch Error");
+                    });
             });
     };
 

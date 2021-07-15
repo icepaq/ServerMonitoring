@@ -6,7 +6,8 @@ export default async (req, res) => {
     const checkuser = new CheckUser();
 
     if (await checkuser.run(req.query.email)) {
-        res.status(200).json({ result: "EMAIL_EXSTS" });
+        res.status(200).json({ result: "EMAIL_EXISTS" });
+        return;
     } else {
         const uri =
             "mongodb+srv://my_username:my_password@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";

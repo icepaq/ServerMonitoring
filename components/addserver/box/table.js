@@ -13,7 +13,9 @@ export default function table() {
             "http://localhost/api/removeserver?server=" +
                 e.target.id +
                 "&key=" +
-                key
+                key + 
+                "&email=" +
+                email
         ).catch((err) => {
             console.log("Fetch Error");
         });
