@@ -9,7 +9,7 @@ module.exports = class CheckToken {
             useUnifiedTopology: true,
         });
 
-        let result = false;
+        let result;
         try {
             await client.connect();
 
@@ -20,12 +20,15 @@ module.exports = class CheckToken {
                 token: parseInt(key),
             };
 
+
             let r = await collection.findOne(query);
 
             result = {
                 expired: true,
                 email: r.email,
             };
+
+            console.log(result);
         } catch (err) {
             console.log(err);
         } finally {

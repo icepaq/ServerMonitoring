@@ -34,10 +34,11 @@ export default async (req, res) => {
         return;
     }
 
-    await fetch("http://" + server + ":8080/getCPU?api_key=" + serverkey)
+    await fetch("http://" + server + ":8084/getCPU?api_key=" + serverkey)
         .then((re) => re.json())
         .then((re) => {
             pid = re.pid;
+            console.log(re);
         })
         .catch((err) => {
             console.log("Fetch Error");
@@ -48,13 +49,14 @@ export default async (req, res) => {
     await fetch(
         "http://" +
             server +
-            ":8080/getoutput?api_key=" +
+            ":8084/getoutput?api_key=" +
             serverkey +
             "&pid=" +
             pid
     )
         .then((r) => r.json())
         .then((r) => {
+            console.log(r)
             res.status(200).json({ result: r.content[0].data });
         })
         .catch((err) => {

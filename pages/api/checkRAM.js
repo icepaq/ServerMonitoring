@@ -34,7 +34,7 @@ export default async (req, res) => {
         return;
     }
 
-    await fetch("http://" + server + ":8080/getRAM?api_key=" + serverkey)
+    await fetch("http://" + server + ":8084/getRAM?api_key=" + serverkey)
         .then((re) => re.json())
         .then((re) => {
             pid = re.pid;
@@ -45,7 +45,7 @@ export default async (req, res) => {
     await fetch(
         "http://" +
             server +
-            ":8080/getoutput?api_key=" +
+            ":8084/getoutput?api_key=" +
             serverkey +
             "&pid=" +
             pid

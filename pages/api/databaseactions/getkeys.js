@@ -1,10 +1,8 @@
-//
-
-export async function getServer(server, email) {
-    const { MongoClient } = require("mongodb");
-
+export async function getkeys(server) {
+    const MongoClient = require("mongodb").MongoClient;
     const uri =
         "mongodb+srv://my_username:my_password@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
     const client = new MongoClient(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -12,11 +10,10 @@ export async function getServer(server, email) {
 
     await client.connect();
 
-    const db = client.db("serverpanel");
-    const collection = db.collection("servers");
+    const collection = client.db('serverpanel').collection('keys');
 
     console.log(server);
-    const r = await collection.findOne({ serverip: server });
+    const r = await collection.findOne({server: server})
     console.log(r);
 
     await client.close();

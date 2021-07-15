@@ -1,5 +1,5 @@
-//import Sidebar from "./sidebar/Sidebar.js";
-//import Keys from "./Keys/Keys.js";
+import Sidebar from "../components/sidebar/Sidebar.js";
+import Keys from "../components/Keys/Keys.js";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Cookies from "universal-cookie";
@@ -17,7 +17,8 @@ export default function keys() {
 
     return (
         <div className="wrapper">
-            <h1>This page is currntly broken</h1>
+            <Sidebar />
+            <Keys />
         </div>
     );
 }
