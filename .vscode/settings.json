@@ -3,7 +3,7 @@
     "prettier.tabWidth": 4,
     "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true
+      "editor.formatOnSave": false
     },
     "powermode.enabled": false,
     "powermode.presets": "particles"

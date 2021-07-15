@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Styles from "../styles/Login.module.css";
 import Cookies from "universal-cookie";
+import Link from 'next/link'
 
 export default function Login() {
     const [email, updateEmail] = useState("");
@@ -58,7 +59,9 @@ export default function Login() {
                         <div className={Styles.button} onClick={login}>
                             Login
                         </div>
-                        <div className={Styles.button}>Create Account</div>
+                        <Link href="/Signup">
+                            <div className={Styles.button}>Create Account</div> 
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,25 @@
 import Styles from "../styles/Login.module.css";
 import localStyles from "../styles/Signup.module.css";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Cookies from "universal-cookie";
+import Link from 'next/link'
 
 export default function Login() {
+    const router = useRouter();
+
+    let email, password;
+
+    const updateEmail = (e) => {
+        email = e.target.value;
+    }
+    const updatePassword = (e) => {
+        password = e.target.value;
+    }
+
+    const signup = () => {
+        fetch("http://localhost/api/authenticator/signup?email=" + email + "&password=" + password)
+        .then(() => { router.push("/Login") } );
+    };
+
     return (
         <div className={Styles.wrapper}>
             <div className={Styles.elementHolder}>
@@ -13,17 +28,21 @@ export default function Login() {
                     <input
                         type="text"
                         className={Styles.input}
-                        placeholder="email"
+                        placeholder="email" 
+                        onChange={updateEmail}
                     />
                     <br />
                     <input
-                        type="text"
+                        type="password"
                         className={Styles.input}
                         placeholder="password"
+                        onChange={updatePassword}
                     />
                     <div className={Styles.buttons}>
-                        <div className={Styles.button}>Login</div>
-                        <div className={Styles.button}>Create Account</div>
+                        <div className={Styles.button} onClick={signup}>Sign Up</div>
+                        <Link href="/Login">
+                            <div className={Styles.button}>Have an account? Log in.</div>
+                        </Link>
                     </div>
                 </div>
             </div>
