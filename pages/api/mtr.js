@@ -8,11 +8,12 @@ const uri =
 export default async (req, res) => {
     const server = req.query.server;
     const key = req.query.key;
+    const email = req.query.email;
 
     const check = new checkToken(server);
 
     const key_email = await check.run(key);
-    const server_email = await getEmail.getServer(server);
+    const server_email = await getEmail.getServer(server, email);
 
     if (key_email.email != server_email.email) {
         console.log("MTR: Authentication Failed");

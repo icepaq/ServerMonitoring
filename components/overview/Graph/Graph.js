@@ -42,7 +42,8 @@ export default class Graph extends React.Component {
                     "http://localhost/api/ping?server=" +
                         this.state.ServerName +
                         "&key=" +
-                        this.state.token
+                        this.state.token +
+                        "&email=" + email
                 )
                     .then((res) => res.json())
                     .then((r) => {

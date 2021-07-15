@@ -9,11 +9,16 @@ export default function table() {
     const [tableData, updateTableData] = useState("Loading...");
 
     const remove = (e) => {
+        let query = "http://localhost/api/removeserver?server=" +
+                        e.target.id +
+                        "&key=" +
+                        key + 
+                        "&email=" +
+                        email;
+
+        console.log(query);
         fetch(
-            "http://localhost/api/removeserver?server=" +
-                e.target.id +
-                "&key=" +
-                key
+            query
         ).catch((err) => {
             console.log("Fetch Error");
         });

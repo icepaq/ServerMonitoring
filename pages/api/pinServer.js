@@ -12,11 +12,12 @@ export default async (req, res) => {
     const CHECK_EMAIL = new checkToken(server);
 
     const key_email = await CHECK_EMAIL.run(key);
-    const server_email = await getEmail.getServer(server);
+    const server_email = await getEmail.getServer(server, email);
 
     if (key_email.email != server_email.email) {
         console.log("pinServer: Authentication Failed");
-
+        console.log(key_email.email);
+        console.log(server_email.email);
         res.status(200).json({ results: "AUTHENTICATION FAILED" });
         return;
     }

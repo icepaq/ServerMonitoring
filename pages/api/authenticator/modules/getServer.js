@@ -1,6 +1,6 @@
 //
 
-export async function getServer(server) {
+export async function getServer(server, email) {
     const { MongoClient } = require("mongodb");
 
     const uri =
@@ -15,7 +15,7 @@ export async function getServer(server) {
     const db = client.db("serverpanel");
     const collection = db.collection("servers");
 
-    const r = await collection.findOne({ serverip: server });
+    const r = await collection.findOne({ serverip: server, email: email });
 
     await client.close();
 

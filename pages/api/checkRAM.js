@@ -12,13 +12,14 @@ export default async (req, res) => {
     const server = req.query.server;
     const serverkey = req.query.serverkey;
     const key = req.query.key;
+    const email = req.query.email;
     let pid;
 
     // Authentication
     const CHECK_EMAIL = new checkToken(server);
 
     const key_email = await CHECK_EMAIL.run(key);
-    const server_email = await getEmail.getServer(server);
+    const server_email = await getEmail.getServer(server, email);
 
     if (key_email.email != server_email.email) {
         res.status(200).json({ results: "ram: AUTHENTICATION FAILED" });

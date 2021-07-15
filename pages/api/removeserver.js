@@ -13,13 +13,14 @@ export default async (req, res) => {
     const serverkey = req.query.serverkey;
     const key = req.query.key;
     let pid;
+    const email = req.query.email;
 
     // Authentication
     const CHECK_EMAIL = new checkToken(server);
 
     const key_email = await CHECK_EMAIL.run(key);
-    const server_email = await getEmail.getServer(server);
-
+    const server_email = await getEmail.getServer(server, email);
+    console.log('server_email'); console.log(server_email); console.log(email); console.log(server);
     if (key_email.email != server_email.email) {
         console.log("removeserver: AUTHENTICATION FAILED");
 
