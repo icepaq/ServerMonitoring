@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import * as check from "./databaseactions/check.js";
 import * as getEmail from "./authenticator/modules/getServer.js";
+import * as GetServerKey from './databaseactions/getserverkey.js';
 const checkToken = require("./authenticator/modules/checkToken.js");
 
 function sleep(ms) {
@@ -10,7 +11,7 @@ function sleep(ms) {
 export default async (req, res) => {
     const server = req.query.server;
     const key = req.query.key;
-    const serverkey = req.query.serverkey;
+    
     const email = req.query.email;
 
     let pid;
@@ -20,6 +21,8 @@ export default async (req, res) => {
 
     const key_email = await CHECK_EMAIL.run(key);
     const server_email = await getEmail.getServer(server, email);
+
+    const serverkey = await GetServerKey.getserverkey(server);
 
     if (key_email.email != server_email.email) {
         res.status(200).json({ results: "checkCPU: AUTHENTICATION FAILED" });

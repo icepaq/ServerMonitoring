@@ -15,12 +15,17 @@ export default async (req, res) => {
     const key_email = await check.run(key);
     const server_email = await getEmail.getServer(server, email);
 
-    if (key_email.email != server_email.email) {
+    let k_email = key_email.email;
+    let s_email = server_email.email;
+
+    
+    if (k_email != s_email) {
         console.log("Ping Authentication Failed");
         res.status(200).json({ results: "AUTHENTICATION FAILED" });
         return;
     }
-
+    
+    
     const client = new MongoClient(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,

@@ -1,6 +1,7 @@
 import Styles from "../../../styles/Server.module.css";
 import Cookies from "universal-cookie";
 import { useState } from "react";
+import Link from 'next/link';
 
 export default function table() {
     const cookie = new Cookies();
@@ -45,23 +46,22 @@ export default function table() {
             for (let i = 0; i < r.result.length; i++) {
                 temp.push(
                     <tr>
-                        <td className={Styles.tableData}>{r.result[i].name}</td>
+                        <td className={Styles.tableData }>
+                             <Link href={{pathname: '/Server', query: {server: r.result[i].serverip}}}>
+                                <p className={Styles.whitelink}>
+                                    {r.result[i].name}
+                                </p>
+                             </Link>
+                             
+                        </td>
                         <td className={Styles.tableData}>
                             {r.result[i].serverip}
                         </td>
                         <td className={Styles.tableData}>
-                            <div
-                                className={Styles.actionsButton}
-                                id={r.result[i].serverip}
-                                onClick={remove}
-                            >
+                            <div className={Styles.actionsButton} id={r.result[i].serverip} onClick={remove}>
                                 Delete
                             </div>
-                            <div
-                                className={Styles.actionsButton}
-                                id={r.result[i].serverip}
-                                onClick={pinserver}
-                            >
+                            <div className={Styles.actionsButton} id={r.result[i].serverip} onClick={pinserver}>
                                 Pin Server
                             </div>
                         </td>
