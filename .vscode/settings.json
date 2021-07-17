@@ -3,8 +3,9 @@
     "prettier.tabWidth": 4,
     "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": false
+      "editor.formatOnSave": false,
+      "editor.autoClosingBrackets": "languageDefined"
     },
     "powermode.enabled": false,
-    "powermode.presets": "particles"
+    "powermode.presets": "particles",
 }
