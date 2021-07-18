@@ -19,7 +19,7 @@ export default async (req, res) => {
 
     const pingTH = thresholds.ping;
     const lossTH = thresholds.loss;
-    const ramTH = thresholds.ram;
+    const ramTH = parseInt(thresholds.ram);
     const cpuTH = thresholds.cpu;
 
     const collection = client.db("serverpanel").collection("latency");
@@ -40,6 +40,27 @@ export default async (req, res) => {
             alive: result.alive,
         });
     });
+
+    let cpuresults = [];
+    const cpucollection = client.db("serverpanel").collection("cpu");
+    const cpucursor = cpucollection.find({ server: server }).sort({ time: -1 });
+
+    await cpucursor.forEach((result) => {
+        cpuresults.push({
+            cpu: result.cpu,
+        });
+    });
+
+    // Get usage results of RAM
+    const ramcollection = client.db("serverpanel").collection("ram");
+    const ramcursor = ramcollection.find({ server: server }).sort({ time: -1 });
+    let ramresults = [];
+    await ramcursor.forEach((result) => {
+        ramresults.push({
+            ram: result.ram,
+        });
+    });
+
 
     try {
         // Check if server is down
@@ -85,7 +106,7 @@ export default async (req, res) => {
     // Check for RAM usage
     try {
         for (let i = 0; i < 2; i++) {
-            if (latencyresults[i].ram <= ramTH + 1) {
+            if (ramresults[i].ram <= ramTH + 1) {
                 break;
             }
             alerts.alert = true;
@@ -98,7 +119,7 @@ export default async (req, res) => {
     // Check for CPU usage
     try {
         for (let i = 0; i < 2; i++) {
-            if (latencyresults[i].cpu <= cpuTH + 1) {
+            if (cpuresults[i].cpu <= cpuTH + 1) {
                 break;
             }
             alerts.alert = true;

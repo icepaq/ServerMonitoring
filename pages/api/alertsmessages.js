@@ -66,6 +66,26 @@ export default async (req, res) => {
                         date: d.toLocaleString(),
                     });
                 }
+
+                // Make an alert for ram
+                if (r.results.ram) {
+                    messages.push({
+                        name: servers[i].name,
+                        serverip: servers[i].serverip,
+                        message: "High RAM Usage",
+                        date: d.toLocaleString(),
+                    });
+                }
+
+                // Make an alert for cpu
+                if (r.results.cpu) {
+                    messages.push({
+                        name: servers[i].name,
+                        serverip: servers[i].serverip,
+                        message: "High CPU Usage",
+                        date: d.toLocaleString(),
+                    });
+                }
             })
             .catch((err) => {
                 console.log("Fetch Error");
