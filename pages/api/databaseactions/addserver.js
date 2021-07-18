@@ -2,7 +2,7 @@ const MongoClient = require("mongodb").MongoClient;
 const uri =
     "mongodb+srv://my_username:my_password@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-export async function main(serverip, servername, email, ping, loss) {
+export async function main(serverip, servername, email, ping, loss, cpu, ram) {
     const client = new MongoClient(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -19,6 +19,8 @@ export async function main(serverip, servername, email, ping, loss) {
             email: email,
             ping: ping, // latency and packet loss threshold
             loss: loss,
+            cpu: cpu,
+            ram: ram,
         });
 
         await client.close();

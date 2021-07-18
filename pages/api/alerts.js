@@ -19,6 +19,8 @@ export default async (req, res) => {
 
     const pingTH = thresholds.ping;
     const lossTH = thresholds.loss;
+    const ramTH = thresholds.ram;
+    const cpuTH = thresholds.cpu;
 
     const collection = client.db("serverpanel").collection("latency");
     const cursor = collection.find({ server: server }).sort({ time: -1 });
@@ -79,6 +81,34 @@ export default async (req, res) => {
     } catch (err) {
         console.log("No packetloss");
     }
+
+    // Check for RAM usage
+    try {
+        for (let i = 0; i < 2; i++) {
+            if (latencyresults[i].ram <= ramTH + 1) {
+                break;
+            }
+            alerts.alert = true;
+            alerts.ram = true;
+        }
+    } catch (err) {
+        console.log("RAM usage not found");
+    }
+
+    // Check for CPU usage
+    try {
+        for (let i = 0; i < 2; i++) {
+            if (latencyresults[i].cpu <= cpuTH + 1) {
+                break;
+            }
+            alerts.alert = true;
+            alerts.cpu = true;
+        }
+    } catch (err) {
+        console.log("CPU usage not found");
+    }
+
+        
 
     await client.close();
 
