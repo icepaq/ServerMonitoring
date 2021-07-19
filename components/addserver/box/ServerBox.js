@@ -61,6 +61,13 @@ export default function ServerBox() {
             "&ramthreshold=" +
             ram;
         fetch(urlString)
+            .then(res => res.json())
+            .then(data => {
+                if(data.result == "Server Exists") {
+                    alert("Server already exists");
+                    return;
+                }
+            })
             .then(() => router.push("/Servers"))
             .catch((err) => {
                 console.log("Fetch Error");
