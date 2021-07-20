@@ -6,7 +6,8 @@
       "editor.formatOnSave": false,
       "editor.autoClosingBrackets": "languageDefined"
     },
-    "takeabreak.interval": 1,
+    "takeabreak.interval": 20,
+    "takeabreak.afkreset": 5,
     "powermode.enabled": false,
     "powermode.presets": "particles",
 }

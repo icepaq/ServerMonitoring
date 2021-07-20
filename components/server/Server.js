@@ -6,7 +6,7 @@ import Graph from "./Graph/Graph.js";
 
 export default function OverviewComponent() {
     return (
-        <div className={Styles.overviewComponent}>
+        <div className={localStyles.background}>
             <Greeting />
             <InformationRow />
             <div className={localStyles.graphWrapper}>

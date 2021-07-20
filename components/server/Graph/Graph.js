@@ -24,6 +24,10 @@ export default class Graph extends React.Component {
             called: false,
             lossData: [1, 2, 3, 4, 5],
             lossLabel: [1, 2, 3, 4, 5],
+            cpuData: [1, 2, 3, 4, 5],
+            cpuLabel: [1, 2, 3, 4, 5],
+            ramData: [1, 2, 3, 4, 5],
+            ramLabel: [1, 2, 3, 4, 5],
         };
 
         console.log(this.state.ServerName);
@@ -78,6 +82,65 @@ export default class Graph extends React.Component {
                     graphLabel: tempLabels,
                     lossData: tempLossData,
                     lossLabel: tempLossLabels,
+                });
+            });
+
+        // Server's CPU graph
+        fetch( "http://localhost/api/cpuHistory?server=" + server )
+            .then((res) => res.json())
+            .then((r) => {
+                console.log('CPU History');
+                console.log(server)
+                console.log(r);
+                let tempData = [];
+                let tempLabels = [];
+
+                try {
+                    for (let i = 0; i < r.result.length; i++) {
+                        let cpu = r.result[i].cpu.substr(0, r.result[i].cpu.length - 1);
+                        console.log(cpu);
+                        tempData.push(cpu);
+                        tempLabels.push(r.result[i].time);
+                    }
+                } catch (err) {
+                    this.setState({
+                        ServerName:
+                            this.state.ServerName + " / No Data",
+                    });
+                }
+
+                this.setState({
+                    cpuData: tempData,
+                    cpuLabel: tempLabels,
+                });
+            });
+
+
+        // Server's RAM graph
+        fetch( "http://localhost/api/ramHistory?server=" + server )
+            .then((res) => res.json())
+            .then((r) => {
+                console.log('RAM History');
+                console.log(server)
+                console.log(r);
+                let tempData = [];
+                let tempLabels = [];
+
+                try {
+                    for (let i = 0; i < r.result.length; i++) {
+                        tempData.push(r.result[i].ram);
+                        tempLabels.push(r.result[i].time);
+                    }
+                } catch (err) {
+                    this.setState({
+                        ServerName:
+                            this.state.ServerName + " / No Data",
+                    });
+                }
+
+                this.setState({
+                    ramData: tempData,
+                    ramLabel: tempLabels,
                 });
             });
     }
@@ -161,6 +224,78 @@ export default class Graph extends React.Component {
             ],
         };
 
+        const cpuData = {
+            labels: this.state.cpuLabel,
+            options: {
+                legend: {
+                    display: false,
+                },
+
+                color: [
+                    'white'
+                ]
+            },
+            datasets: [
+                {
+                    label: "Latency",
+                    data: this.state.cpuData,
+                    backgroundColor: [
+                        "rgba(255, 99, 132, 0.2)",
+                        "rgba(54, 162, 235, 0.2)",
+                        "rgba(255, 206, 86, 0.2)",
+                        "rgba(75, 192, 192, 0.2)",
+                        "rgba(153, 102, 255, 0.2)",
+                        "rgba(255, 159, 64, 0.2)",
+                    ],
+                    borderColor: [
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 159, 64, 1)",
+                    ],
+                    borderWidth: 1,
+                },
+            ],
+        };
+
+        const ramData = {
+            labels: this.state.ramLabel,
+            options: {
+                legend: {
+                    display: false,
+                },
+
+                color: [
+                    'white'
+                ]
+            },
+            datasets: [
+                {
+                    label: "Latency",
+                    data: this.state.ramData,
+                    backgroundColor: [
+                        "rgba(255, 99, 132, 0.2)",
+                        "rgba(54, 162, 235, 0.2)",
+                        "rgba(255, 206, 86, 0.2)",
+                        "rgba(75, 192, 192, 0.2)",
+                        "rgba(153, 102, 255, 0.2)",
+                        "rgba(255, 159, 64, 0.2)",
+                    ],
+                    borderColor: [
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 159, 64, 1)",
+                    ],
+                    borderWidth: 1,
+                },
+            ],
+        };
+
         return (
             <>
                 <div className={localStyles.graph}>
@@ -171,6 +306,16 @@ export default class Graph extends React.Component {
                 <div className={localStyles.graph}>
                     <h1 className={Styles.graphTitle}>Loss</h1>
                     <Line data={lossData} options={{ animation: false }} />
+                </div>
+
+                <div className={localStyles.graph}>
+                    <h1 className={Styles.graphTitle}>CPU Usage</h1>
+                    <Line data={cpuData} options={{ animation: false }} />
+                </div>
+
+                <div className={localStyles.graph}>
+                    <h1 className={Styles.graphTitle}>RAM Usage</h1>
+                    <Line data={ramData} options={{ animation: false }} />
                 </div>
             </>
         );
