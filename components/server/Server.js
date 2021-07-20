@@ -11,8 +11,6 @@ export default function OverviewComponent() {
             <InformationRow />
             <div className={localStyles.graphWrapper}>
                 <Graph />
-                <Graph />
-                <Graph />
             </div>
         </div>
     );
