@@ -1,6 +1,8 @@
 import Styles from "../../styles/Home.module.css";
 import Cookies from "universal-cookie";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import Link from 'next/link';
 
 
 export default function OverviewComponent() {
@@ -10,6 +12,8 @@ export default function OverviewComponent() {
     const key = cookie.get("logincookie");
 
     const [name, setName] = useState('');
+
+    const router = useRouter();
 
     fetch("http://localhost/api/getUserConfig?email=" + email + "&key=" + key)
         .then(response => response.json())
@@ -21,6 +25,23 @@ export default function OverviewComponent() {
             
         });
 
-    return <div className={Styles.greeting}>Hi, {name}</div>;
+
+    const logout = () => {
+        cookie.remove("logincookieemail");
+        cookie.remove("logincookie");
+        router.push("/Login");
+    }
+
+    return (
+        <div className={Styles.inline}>
+            <div className={Styles.greeting}>
+                Hi, {name}
+            </div>
+            <div className={Styles.logout} onClick={logout}>
+                    Logout
+            </div>
+        </div>
+        
+    )
     
 }
