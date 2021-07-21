@@ -26,8 +26,8 @@ export default function Login() {
         )
             .then((res) => res.json())
             .then((r) => {
-                cookie.set("logincookie", r.result, { maxAge: 600 });
-                cookie.set("logincookieemail", email, { maxAge: 600 });
+                cookie.set("logincookie", r.result, { maxAge: 3600 });
+                cookie.set("logincookieemail", email, { maxAge: 3600 });
             })
             .then(() => {
                 location.replace("/Overview");
