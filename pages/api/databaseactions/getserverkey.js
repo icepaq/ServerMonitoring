@@ -13,6 +13,8 @@ export async function getserverkey(server, email) {
     const collection = client.db("serverpanel").collection("keys");
 
     let r = await collection.findOne({ server: server });
+
+    await client.close();
     
     return r.key;
 }

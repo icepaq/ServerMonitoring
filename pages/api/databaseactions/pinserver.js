@@ -14,4 +14,6 @@ export async function pinserver(server, email) {
 
     await collection.deleteMany({ email: email });
     await collection.insertOne({ server: server, email: email });
+
+    await client.close();
 }

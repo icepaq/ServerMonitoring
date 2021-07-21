@@ -32,5 +32,7 @@ export async function update(email, name, company, role, country) {
 
     let r = await collection.updateOne(filter, update, options);
 
+    await client.close();
+
     return r;
 }

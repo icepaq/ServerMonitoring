@@ -15,5 +15,7 @@ export async function getuserconfig(email) {
 
     let r = await collection.findOne({ email: email });
 
+    await client.close();
+
     return r;
 }

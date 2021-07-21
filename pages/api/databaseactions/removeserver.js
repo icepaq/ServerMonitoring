@@ -38,4 +38,6 @@ export async function remove(server) {
     // Server
     collection = client.db("serverpanel").collection("servers");
     op = await collection.deleteOne({ serverip: server });
+
+    await client.close();
 }

@@ -32,5 +32,7 @@ export async function update(key, newkey) {
 
     let r = await collection.updateOne(filter, update, options);
 
+    await client.close();
+
     return r;
 }

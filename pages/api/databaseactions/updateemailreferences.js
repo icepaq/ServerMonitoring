@@ -32,4 +32,6 @@ export async function update(email, newEmail) {
     await pins.updateOne(filter, update, options);
     await servers.updateOne(filter, update, options);
     await users.updateOne(filter, update, options);
+
+    await client.close();
 }
