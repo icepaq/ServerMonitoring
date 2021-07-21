@@ -4,7 +4,7 @@ import Information from "./information.js";
 
 export default function InformationRow(props) {
     const [alerts, setAlerts] = useState("0");
-    const [serversUp, setServersUp] = useState("0");
+    const [serversDown, setServerDown] = useState("0");
     const [servers, setServers] = useState("0");
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export default function InformationRow(props) {
                 if (isSubscribed) {
                     setAlerts(r.alerts);
                     setServers(r.servers);
-                    setServersUp(r.down);
+                    setServerDown(r.down);
                 }
             })
             .catch((err) => {
@@ -30,7 +30,7 @@ export default function InformationRow(props) {
         <div className={Styles.informationRow}>
             <Information number={alerts} title="Alerts" Link="/Alerts" />
             <Information
-                number={serversUp}
+                number={serversDown}
                 title="Servers Down"
                 Link="/Alerts"
             />

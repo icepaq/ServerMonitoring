@@ -35,6 +35,9 @@ export default async (req, res) => {
                 if (r.results.alert == true) {
                     alerts += 1;
                 }
+                if (r.results.down == true) {
+                    down += 1;
+                }
             })
             .catch((err) => {
                 console.log("Fetch Error");
