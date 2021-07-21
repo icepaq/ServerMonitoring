@@ -1,6 +1,6 @@
 const MongoClient = require("mongodb").MongoClient;
 
-export async function update(email, newEmail, name, company, role, country) {
+export async function update(email, name, company, role, country) {
     const uri =
         "mongodb+srv://my_username:my_password@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
