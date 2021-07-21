@@ -96,11 +96,14 @@ export default class Graph extends React.Component {
                 let tempLabels = [];
 
                 try {
-                    for (let i = 0; i < r.result.length; i++) {
+                    for (let i = 0; i < 20; i++) {
                         let cpu = r.result[i].cpu.substr(0, r.result[i].cpu.length - 1);
                         console.log(cpu);
                         tempData.push(cpu);
-                        tempLabels.push(r.result[i].time);
+
+                        let tempTime = r.result[i].time;
+                        let tempDate = new Date(tempTime).toLocaleTimeString();
+                        tempLabels.push(tempDate);
                     }
                 } catch (err) {
                     this.setState({
@@ -129,7 +132,10 @@ export default class Graph extends React.Component {
                 try {
                     for (let i = 0; i < r.result.length; i++) {
                         tempData.push(r.result[i].ram);
-                        tempLabels.push(r.result[i].time);
+                        
+                        let tempTime = r.result[i].time;
+                        let tempDate = new Date(tempTime).toLocaleTimeString();
+                        tempLabels.push(tempDate);
                     }
                 } catch (err) {
                     this.setState({

@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import * as RAM from "./hardware/ram.js";
 import * as check from "./databaseactions/check.js";
 import * as getEmail from "./authenticator/modules/getServer.js";
+import * as GetServerKey from './databaseactions/getserverkey.js';
 const checkToken = require("./authenticator/modules/checkToken.js");
 
 function sleep(ms) {
@@ -10,16 +11,19 @@ function sleep(ms) {
 
 export default async (req, res) => {
     const server = req.query.server;
-    const serverkey = req.query.serverkey;
     const key = req.query.key;
     const email = req.query.email;
     let pid;
+
+    const serverkey = await GetServerKey.getserverkey(server);
 
     // Authentication
     const CHECK_EMAIL = new checkToken(server);
 
     const key_email = await CHECK_EMAIL.run(key);
     const server_email = await getEmail.getServer(server, email);
+
+    
 
     if (key_email.email != server_email.email) {
         res.status(200).json({ results: "ram: AUTHENTICATION FAILED" });

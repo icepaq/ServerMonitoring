@@ -52,6 +52,15 @@ export default function InformationRow() {
                         setCPU(_cpu);
 
                         cookie.set("loaded", "true");
+                    })
+
+                fetch("http://localhost/api/checkRAM?key=" + key + "&server=" + server)
+                    .then((res) => res.json())
+                    .then((r) => {
+                        console.log('RAM');
+                        console.log(r);
+                        let percent = parseInt( parseInt(r.result.used) / parseInt(r.result.total) * 100 ) + "%";
+                        setRAM(percent);
                     });
             });
     }
@@ -63,7 +72,7 @@ export default function InformationRow() {
                 <Information number={latency} title="Latency" />
                 <Information number={loss} title="Packetloss" />
                 <Information number={cpu} title="CPU Usage" />
-                <Information number="13%" title="RAM Usage" />
+                <Information number={ram} title="RAM Usage" />
             </div>
         </>
     );
