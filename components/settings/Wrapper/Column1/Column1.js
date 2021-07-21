@@ -29,10 +29,17 @@ export default function OverviewComponent() {
             if (r.company != "undefined") SETCOMPANY(r.company);
             if (r.role != "undefined") SETROLE(r.role);
             if (r.country != "undefined") SETCOUNTRY(r.country);
+
+            name = r.name;
+            email = r.email;
+            company = r.company;
+            role = r.role;
+            country = r.country;
         });
 
     const setName = (e) => {
         name = e.target.value;
+        console.log(name);
     };
 
     const setEmail = (e) => {
@@ -56,7 +63,7 @@ export default function OverviewComponent() {
         fetch("http://localhost/api/authenticator/emailexists?email=" + email)
             .then((res) => res.json())
             .then((r) => {
-                if (r.result == "EMAIL_EXISTS") {
+                if (r.result == "EMAIL_EXISTS" && _email != EMAIL) {
                     alert("Email Exists");
                     return;
                 }
