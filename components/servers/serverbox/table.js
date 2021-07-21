@@ -1,6 +1,7 @@
 import Styles from "../../../styles/Server.module.css";
 import Cookies from "universal-cookie";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {useRouter} from 'next/router';
 import Link from 'next/link';
 
 export default function table() {
@@ -8,6 +9,7 @@ export default function table() {
     const key = cookie.get("logincookie");
     const email = cookie.get("logincookieemail");
     const [tableData, updateTableData] = useState("Loading...");
+    const router = useRouter();
 
     const remove = (e) => {
         let query = "http://localhost/api/removeserver?server=" +
@@ -39,6 +41,13 @@ export default function table() {
         });
     };
 
+    const settings = (e) => {
+        // Forward to the settings page
+        const server = e.target.id;
+        
+        router.push("/ServerSettings?server=" + server);
+    }
+
     let temp = [];
     fetch("http://localhost/api/getServers?email=" + email + "&key=" + key)
         .then((res) => res.json())
@@ -58,6 +67,9 @@ export default function table() {
                             {r.result[i].serverip}
                         </td>
                         <td className={Styles.tableData}>
+                            <div className={Styles.actionsButton} id={r.result[i].serverip} onClick={settings}>
+                                Settings
+                            </div>
                             <div className={Styles.actionsButton} id={r.result[i].serverip} onClick={remove}>
                                 Delete
                             </div>
