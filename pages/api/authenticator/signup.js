@@ -2,8 +2,15 @@ const { MongoClient } = require("mongodb");
 const CheckUser = require("./modules/checkuser.js");
 const Crypt = require("crypto");
 
+import * as CheckBetaKey from '../databaseactions/checkBetaKey.js';
+
 export default async (req, res) => {
     const checkuser = new CheckUser();
+
+    if (!(await CheckBetaKey.check(req.query.betakey))) {
+        res.status(200).json({result: "INVALID_BETAKEY"});
+        return;
+    }   
 
     if (await checkuser.run(req.query.email)) {
         res.status(200).json({ result: "EMAIL_EXISTS" });

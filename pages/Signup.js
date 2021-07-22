@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function Login() {
     const router = useRouter();
 
-    let email, password;
+    let email, password, betakey;
 
     const updateEmail = (e) => {
         email = e.target.value;
@@ -15,16 +15,28 @@ export default function Login() {
         password = e.target.value;
     }
 
+    const updateBetaKey = (e) => {
+        betakey = e.target.value;
+    }
+
     const signup = () => {
         fetch("http://localhost/api/authenticator/emailexists?email=" + email)
             .then((r) => r.json())
             .then((r) => {
+                
                 if (r.result == "EMAIL_EXISTS") {
                     alert("Email Exists");
                     return;
                 }
                 fetch("http://localhost/api/authenticator/signup?email=" + email + "&password=" + password)
-                .then(() => { router.push("/Login") } );
+                    .then((r) => r.json())
+                    .then((r) => {
+                        if (r.result == "INVALID_BETAKEY") {
+                            alert("Invalid Beta Key");
+                            return;
+                        }
+                        router.push("/Login");
+                    });
             })
     };
 
@@ -45,6 +57,18 @@ export default function Login() {
                         className={Styles.input}
                         placeholder="password"
                         onChange={updatePassword}
+                    />
+                    <input
+                        type="password"
+                        className={Styles.input}
+                        placeholder="password"
+                        onChange={updatePassword}
+                    />
+                    <input
+                        type="password"
+                        className={Styles.input}
+                        placeholder="Beta Key"
+                        onChange={updateBetaKey}
                     />
                     <div className={Styles.buttons}>
                         <div className={Styles.button} onClick={signup}>Sign Up</div>
