@@ -6,6 +6,9 @@ module.exports = class Email {
         let message = 
             'You recently requested to change your password. If you did not do this, you may disregard this email. \n' +
             'Your code is: ' + code;
+
+        let html = '<p>You recently requested to change your password. If you did not do this, you may disregard this email.</p><br/>' +
+            '<p>Your code is: </p> <h2>' + code + '</h2>';
         
         console.log('Email: ' + message);
         // create reusable transporter object using the default SMTP transport
@@ -26,6 +29,7 @@ module.exports = class Email {
             to: to, // list of receivers
             subject: 'Your Password Reset Code', // Subject line
             text: message, // plain text body
+            html: html, // html body
         });
 
         console.log("Message sent: %s", info.messageId);
