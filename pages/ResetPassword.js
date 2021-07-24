@@ -29,12 +29,11 @@ export default function ResetPassword() {
         }
 
         // Call the API to reset the password
-        fetch("http://localhost/api/resetpassword?code=" + code + "&password=" + newPassword)   
+        fetch("http://localhost/api/authenticator/passwordreset/resetpassword?code=" + code + "&password=" + newPassword)   
             .then(res => res.json())
             .then((r) => {
                 if (r.result = "SUCCESS") {
-                    alert(`Password reset successfully`);
-                    router.push("/login");
+                    router.push("/Login");
                 } else {
                     alert(`Password reset failed`);
                 }

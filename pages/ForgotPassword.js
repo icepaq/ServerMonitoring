@@ -20,12 +20,12 @@ export default function ResetPassword() {
                     return;
                 }
                 // Call the generate reset code api
-                fetch('http://localhost/api/authenticator/generateresetcode?email=' + email)
+                fetch('http://localhost/api/authenticator/passwordreset/generateresetcode?email=' + email)
                     .then(response => response.json())
                     .then((r) => {
                         if(r.result == "SUCCESS") {
                             // Redirect to the reset password page
-                            router.push('/resetpassword');
+                            router.push('/ResetPassword');
                             return;
                         }
                         alert('Error');
