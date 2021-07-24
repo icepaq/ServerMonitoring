@@ -62,6 +62,10 @@ export default function Login() {
                         <Link href="/Signup">
                             <div className={Styles.button}>Create Account</div> 
                         </Link>
+                        <Link href="/ForgotPassword">
+                            <p className={Styles.forgotpassword}>Forgot Password?</p>
+                        </Link>
+                        
                     </div>
                 </div>
             </div>
