@@ -23,9 +23,15 @@ export default function ResetPassword() {
     }
 
     const submit = (e) => {
+
+        if (!newPassword.match(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)) {
+            swal.fire('Weak Password.')
+            return;
+        }
+
         // If the passwords don't match, alert the user and don't submit
         if (newPassword !== confirmPassword) {
-            alert(`Passwords do not match`);
+            swal.fire(`Passwords do not match`);
             return;
         }
 
@@ -56,13 +62,13 @@ export default function ResetPassword() {
                         onChange={changeCode}
                     /> 
                     <input
-                        type="text"
+                        type="password"
                         className={localStyles.input}
                         placeholder="New Password"
                         onChange={changeNewPassword}
                     />
                     <input
-                        type="text"
+                        type="password"
                         className={localStyles.input}
                         placeholder="Confirm Password"
                         onChange={changeConfirmPassword}
