@@ -2,6 +2,7 @@ import Styles from "../../../styles/NewServer.module.css";
 import Cookies from "universal-cookie";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import swal from "sweetalert2";
 
 export default function ServerBox() {
     const cookie = new Cookies();
@@ -64,7 +65,7 @@ export default function ServerBox() {
             .then(res => res.json())
             .then(data => {
                 if(data.result == "Server Exists") {
-                    alert("Server already exists");
+                    swal.fire("Server already exists");
                     return;
                 }
             })
