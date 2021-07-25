@@ -1,5 +1,5 @@
 import Sidebar from "../components/sidebar/Sidebar.js";
-import MobileAlerts from "../components/mobilealerts/MobileAlerts.js";
+import EmailAlerts from "../components/emailalerts/MobileAlerts.js";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Cookies from "universal-cookie";
@@ -18,7 +18,7 @@ export default function mobileAlerts() {
     return (
         <div className="wrapper">
             <Sidebar />
-            <MobileAlerts />
+            <EmailAlerts />
         </div>
     );
 }
