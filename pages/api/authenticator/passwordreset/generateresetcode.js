@@ -25,10 +25,6 @@ export default async (req, res) => {
         code: random
     });
 
-    /** Email the code to the user */
-    console.log('Email: ' + email);
-    console.log('Code: ' + random);
-
     const e = new Email();
     e.send(email, random);
 

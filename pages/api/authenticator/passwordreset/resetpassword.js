@@ -28,6 +28,11 @@ export default async (req, res) => {
     }
 
     const email = await collection.findOne({ code: code });
+    if (email == null) {
+        res.status(200).json({result: "Code Invalid"})
+        return;
+    }
+
 
     // Update the user password
     password = "54LT3D18" + password;
@@ -50,6 +55,8 @@ export default async (req, res) => {
     };
 
     await users.updateOne( filter, update, options );
+
+    await collection.deleteMany({ code: code });
 
     await client.close();
 

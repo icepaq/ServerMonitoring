@@ -1,6 +1,7 @@
 import Styles from "../styles/Login.module.css";
 import localStyles from "../styles/ForgotPassword.module.css";
 import { useRouter } from "next/router";
+import swal from "sweetalert2";
 
 export default function ResetPassword() {
 
@@ -32,10 +33,11 @@ export default function ResetPassword() {
         fetch("http://localhost/api/authenticator/passwordreset/resetpassword?code=" + code + "&password=" + newPassword)   
             .then(res => res.json())
             .then((r) => {
-                if (r.result = "SUCCESS") {
+                console.log(r);
+                if (r.result == "SUCCESS") {
                     router.push("/Login");
                 } else {
-                    alert(`Password reset failed`);
+                    swal.fire(`Password reset failed`);
                 }
             })
     }
