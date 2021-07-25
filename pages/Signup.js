@@ -2,11 +2,12 @@ import Styles from "../styles/Login.module.css";
 import localStyles from "../styles/Signup.module.css";
 import { useRouter } from "next/router";
 import Link from 'next/link'
+import swal from 'sweetalert2';
 
 export default function Login() {
     const router = useRouter();
 
-    let email, password, betakey;
+    let email, password, confirmPassword, betakey;
 
     const updateEmail = (e) => {
         email = e.target.value;
@@ -15,11 +16,43 @@ export default function Login() {
         password = e.target.value;
     }
 
+    const updateConfirmPassword = (e) => {
+        confirmPassword = e.target.value;
+    }
+
     const updateBetaKey = (e) => {
         betakey = e.target.value;
     }
 
+    const validateEmail = () => {
+        console.log(email);
+        if (!email) {
+            return 'invalid';
+        }
+        if (!email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
+            console.log(email);
+            console.log('invalid');
+            return 'invalid';
+        }
+        return 'valid';
+    }
+
     const signup = () => {
+
+        if(validateEmail() != 'valid') {
+            swal.fire('Invalid Email Address')
+            return;
+        }
+
+        if(password != confirmPassword) {
+            swal.fire('Passwords do not match')
+        }
+
+        if (!password.match(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)) {
+            swal.fire('Invalid Password')
+            return;
+        }
+
         fetch("http://localhost/api/authenticator/emailexists?email=" + email)
             .then((r) => r.json())
             .then((r) => {
@@ -32,7 +65,7 @@ export default function Login() {
                     .then((r) => r.json())
                     .then((r) => {
                         if (r.result == "INVALID_BETAKEY") {
-                            alert("Invalid Beta Key");
+                            swal.fire("Invalid Beta Key");
                             return;
                         }
                         router.push("/Login");
@@ -62,7 +95,7 @@ export default function Login() {
                         type="password"
                         className={Styles.input}
                         placeholder="password"
-                        onChange={updatePassword}
+                        onChange={updateConfirmPassword}
                     />
                     <input
                         type="password"
