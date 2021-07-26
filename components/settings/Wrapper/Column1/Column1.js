@@ -86,13 +86,9 @@ export default function OverviewComponent() {
 
                 console.log(link);
                 fetch(link)
-                    .then(() => {
-                        cookie.remove("logincookie");
-                        cookie.remove("loginemailcookie");
-                        router.push("/Login");
-                    })
                     .catch((err) => {
                         console.error("Fetch Error");
+                        console.error(err);
                     });
             });
     };
