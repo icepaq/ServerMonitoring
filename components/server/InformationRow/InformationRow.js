@@ -36,6 +36,7 @@ export default function InformationRow() {
                 }
             })
             .then(() => {
+                try {
                 fetch(
                     "http://localhost/api/checkCPU?key=" +
                         key +
@@ -47,12 +48,14 @@ export default function InformationRow() {
                         _cpu = r.result;
                     })
                     .then(() => {
-                        setLatency(_latency);
-                        setLoss(_loss);
-                        setCPU(_cpu);
-
                         cookie.set("loaded", "true");
-                    })
+                    }) 
+                } catch (err) {
+                    console.log(err);
+                }
+                setLatency(_latency);
+                setLoss(_loss);
+                setCPU(_cpu);
 
                 fetch("http://localhost/api/checkRAM?key=" + key + "&server=" + server)
                     .then((res) => res.json())
