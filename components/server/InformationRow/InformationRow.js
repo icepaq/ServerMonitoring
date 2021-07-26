@@ -46,6 +46,7 @@ export default function InformationRow() {
                     .then((res) => res.json())
                     .then((r) => {
                         _cpu = r.result;
+                        setCPU(_cpu);
                     })
                     .then(() => {
                         cookie.set("loaded", "true");
@@ -55,7 +56,7 @@ export default function InformationRow() {
                 }
                 setLatency(_latency);
                 setLoss(_loss);
-                setCPU(_cpu);
+                
 
                 fetch("http://localhost/api/checkRAM?key=" + key + "&server=" + server)
                     .then((res) => res.json())
