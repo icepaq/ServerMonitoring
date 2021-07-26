@@ -20,7 +20,15 @@ export default async (req, res) => {
         return;
     }
 
-    const result = await User.getuserconfig(req.query.email);
-    console.log(result);
+    const r = await User.getuserconfig(req.query.email);
+    console.log(r);
+
+    const result = {
+        email: r.email,
+        name: r.name,
+        company: r.company,
+        role: r.role,
+        country: r.country,
+    }
     res.status(200).json({ results: result });
 };

@@ -9,6 +9,7 @@ export default function Sidebar() {
             <Item message="Overview" link="/Overview" />
             <Item message="Servers" link="/Servers" />
             <Item message="Alerts" link="/Alerts" />
+            <Item message="Email Alerts" link="/EmailAlerts" />
             <Item message="API Keys" link="/Keys" />
             <Item message="Settings" link="/Settings" />
         </div>
