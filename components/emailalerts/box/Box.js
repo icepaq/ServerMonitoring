@@ -7,7 +7,6 @@ export default function ServerBox() {
     return (
         <div className={Styles.serverbox}>
             <InputBox />
-            <ToggleAlerts />
             <Table />
         </div>
     );
