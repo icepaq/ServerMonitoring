@@ -3,7 +3,7 @@ module.exports = class CheckUser {
         const { MongoClient } = require("mongodb");
 
         const uri =
-            "mongodb+srv://my_username:my_password@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+            "mongodb+srv://my_username:" + process.env.MONGOPASS + "@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
         const client = new MongoClient(uri, {
             useNewUrlParser: true,
             useUnifiedTopology: true,

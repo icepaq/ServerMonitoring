@@ -3,7 +3,7 @@ import * as getEmail from "./authenticator/modules/getServer.js";
 
 const MongoClient = require("mongodb").MongoClient;
 const uri =
-    "mongodb+srv://my_username:my_password@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    "mongodb+srv://my_username:" + process.env.MONGOPASS + "@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 export default async (req, res) => {
     const server = req.query.server;
