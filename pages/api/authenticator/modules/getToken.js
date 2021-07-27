@@ -21,7 +21,7 @@ module.exports = class Authenticate {
             let query = {
                 token: token,
                 email: email,
-                expiry: Date.now() + 60,
+                expiry: Date.now() + (60 * 60 * 1000),
             };
 
             r = await collection.insertOne(query);
