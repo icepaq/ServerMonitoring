@@ -19,9 +19,8 @@ export default async (req, res) => {
     
     // Check if the code exists in the database
     const user = await collection.findOne({ code: code });
-    if (!user) {
-        console.log(code);
-        console.log(user);
+
+    if (!user || user.expiry < Date.now()) {
         console.log('Reset Password Code Invalid');
         res.status(200).json({result: "Code Invalid"})
         return;

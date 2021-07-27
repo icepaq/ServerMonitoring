@@ -4,10 +4,10 @@ module.exports = class Email {
     async send(to, code) {
 
         let message = 
-            'You recently requested to change your password. If you did not do this, you may disregard this email. \n' +
+            'You recently requested to change your password. If you did not do this, you may disregard this email. This code will expire in 5 minutes.\n' +
             'Your code is: ' + code;
 
-        let html = '<p>You recently requested to change your password. If you did not do this, you may disregard this email.</p><br/>' +
+        let html = '<p>You recently requested to change your password. If you did not do this, you may disregard this email. This code will expire in 5 minutes.</p><br/>' +
             '<p>Your code is: </p> <h2>' + code + '</h2>';
         
         console.log('Email: ' + message);

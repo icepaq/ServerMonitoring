@@ -22,7 +22,8 @@ export default async (req, res) => {
 
     const r = await collection.insertOne({
         email: email,
-        code: random
+        code: random,
+        expiry: Date.now() + (60 * 5 * 1000),
     });
 
     const e = new Email();
