@@ -8,5 +8,5 @@ export default function index() {
         router.push("/Login");
     });
 
-    return <h1 className={styles.hi}>Hi</h1>;
+    return <div className={styles.background}></div>;
 }
