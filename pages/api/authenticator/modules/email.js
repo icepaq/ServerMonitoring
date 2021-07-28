@@ -19,7 +19,7 @@ module.exports = class Email {
             tls: { rejectUnauthorized: false },
             auth: {
                 user: "no-reply@controlserverhosting.com",
-                pass: "",
+                pass: process.env.EMAIL_PASSWORD,
             },
         });
 
