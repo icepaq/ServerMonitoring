@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const fetch = require('node-fetch');
 
 module.exports = class Email {
     async send(to, code) {
@@ -10,7 +11,17 @@ module.exports = class Email {
         let html = '<p>You recently requested to change your password. If you did not do this, you may disregard this email. This code will expire in 5 minutes.</p><br/>' +
             '<p>Your code is: </p> <h2>' + code + '</h2>';
         
-        console.log('Email: ' + message);
+        
+        fetch("http://" + process.env.EMAILAPISERVER + ":3000/send?code=" + code + "&to=" + to + "&key=" + process.env.EMAILAPIKEY)
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);   
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+        /*console.log('Email: ' + message);
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
             host: "smtp.porkbun.com",
@@ -38,5 +49,6 @@ module.exports = class Email {
         // Preview only available when sending through an Ethereal account
         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
         // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+        */
     }
 };
