@@ -15,7 +15,7 @@ export default function table() {
 
     const register = (e) => {
         console.log(key);
-        fetch("http://localhost/api/registerserver?server=" + e.target.id + "&key=" + key)
+        fetch("https://serverpanel.controlserverhosting.com/api/registerserver?server=" + e.target.id + "&key=" + key)
             .then(res => res.json())
             .then((r) => {
                 console.log(r);
@@ -23,7 +23,7 @@ export default function table() {
     }
 
     // Get all servers
-    fetch("http://localhost/api/getServers?email=" + email + "&key=" + key)
+    fetch("https://serverpanel.controlserverhosting.com/api/getServers?email=" + email + "&key=" + key)
         .then(res => res.json())
         .then((r) => {
 
@@ -49,7 +49,7 @@ export default function table() {
     
     for(let i = 0; i < servers.length; i++) {
         // fetch keys
-        fetch("http://localhost/api/getkeys?key=" + key + "&server=" + servers[i]);
+        fetch("https://serverpanel.controlserverhosting.com/api/getkeys?key=" + key + "&server=" + servers[i]);
     }
 
     let tableData = (

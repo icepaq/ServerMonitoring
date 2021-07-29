@@ -9,7 +9,7 @@ export default function table() {
 
     const [data, setData] = useState();
 
-    fetch("http://localhost/api/alertsmessages?email=" + email + "&key=" + key)
+    fetch("https://serverpanel.controlserverhosting.com/api/alertsmessages?email=" + email + "&key=" + key)
         .then((res) => res.json())
         .then((r) => {
             let temp = [];
