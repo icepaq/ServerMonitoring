@@ -96,7 +96,7 @@ export default class Graph extends React.Component {
                 let tempLabels = [];
 
                 try {
-                    for (let i = 0; i < 20; i++) {
+                    for (let i = r.result.length - 30; i < r.result.length; i++) {
                         let cpu = r.result[i].cpu.substr(0, r.result[i].cpu.length - 1);
                         console.log(cpu);
                         tempData.push(cpu);
@@ -130,7 +130,7 @@ export default class Graph extends React.Component {
                 let tempLabels = [];
 
                 try {
-                    for (let i = 0; i < r.result.length; i++) {
+                    for (let i = r.result.length - 30; i < r.result.length; i++) {
                         tempData.push(r.result[i].ram);
                         
                         let tempTime = r.result[i].time;
