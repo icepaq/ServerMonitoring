@@ -14,7 +14,7 @@ export default async (req, res) => {
     await client.connect();
         
     const cpucollection = client.db("serverpanel").collection("ram");
-    const cpucursor = cpucollection.find({ server: server }).sort({ time: -1 });
+    const cpucursor = cpucollection.find({ server: server }).sort({ time: 1 });
 
     let cpuresults = [];
     await cpucursor.forEach((result) => {
