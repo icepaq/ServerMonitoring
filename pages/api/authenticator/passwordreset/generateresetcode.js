@@ -27,7 +27,8 @@ export default async (req, res) => {
     });
 
     const e = new Email();
-    e.send(email, random);
+    
+    await e.send(email, random);
 
     await client.close();
 
