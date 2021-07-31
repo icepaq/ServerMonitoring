@@ -1,14 +1,17 @@
 const Email = require('../modules/email.js');
 const { MongoClient } = require("mongodb");
-const uri =
-            "mongodb+srv://my_username:" + process.env.MONGOPASS + "@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-const client = new MongoClient(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
 
 export default async (req, res) => {
+
+    const uri =
+            "mongodb+srv://my_username:" + process.env.MONGOPASS + "@cluster0.dgxwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+    const client = new MongoClient(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+
     const email = req.query.email;
 
     await client.connect();
@@ -27,7 +30,8 @@ export default async (req, res) => {
     });
 
     const e = new Email();
-    e.send(email, random);
+    
+    await e.send(email, random);
 
     await client.close();
 

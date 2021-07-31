@@ -12,7 +12,7 @@ module.exports = class Email {
             '<p>Your code is: </p> <h2>' + code + '</h2>';
         
         
-        fetch("http://" + process.env.EMAILAPISERVER + ":3000/send?code=" + code + "&to=" + to + "&key=" + process.env.EMAILAPIKEY)
+        await fetch("http://" + process.env.EMAILAPISERVER + ":3000/send?code=" + code + "&to=" + to + "&key=" + process.env.EMAILAPIKEY)
             .then(response => response.json())
             .then(response => {
                 console.log(response);   
