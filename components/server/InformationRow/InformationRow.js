@@ -22,7 +22,7 @@ export default function InformationRow() {
     // Fetch latency Fetch Packetloss
     if (latency == "") {
         console.log("calling");
-        fetch("https://serverpanel.controlserverhosting.com/api/ping?server=" + server + "&key=" + key)
+        fetch("http://localhost/api/ping?server=" + server + "&key=" + key)
             .then((res) => res.json())
             .then((r) => {
                 try {
@@ -38,7 +38,7 @@ export default function InformationRow() {
             .then(() => {
                 try {
                 fetch(
-                    "https://serverpanel.controlserverhosting.com/api/checkCPU?key=" +
+                    "http://localhost/api/checkCPU?key=" +
                         key +
                         "&server=" +
                         server
@@ -58,7 +58,7 @@ export default function InformationRow() {
                 setLoss(_loss);
                 
 
-                fetch("https://serverpanel.controlserverhosting.com/api/checkRAM?key=" + key + "&server=" + server)
+                fetch("http://localhost/api/checkRAM?key=" + key + "&server=" + server)
                     .then((res) => res.json())
                     .then((r) => {
                         console.log('RAM');

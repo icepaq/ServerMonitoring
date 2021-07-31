@@ -12,7 +12,7 @@ export default function ResetPassword() {
 
     const submit = (e) => {
         // Check if the email exists by calling the API
-        fetch('https://serverpanel.controlserverhosting.com/api/authenticator/emailexists?email=' + email)
+        fetch('http://localhost/api/authenticator/emailexists?email=' + email)
             .then(response => response.json())
             .then((r) => {
                 if(r.result == "Not found") {
@@ -20,7 +20,7 @@ export default function ResetPassword() {
                     return;
                 }
                 // Call the generate reset code api
-                fetch('https://serverpanel.controlserverhosting.com/api/authenticator/passwordreset/generateresetcode?email=' + email)
+                fetch('http://localhost/api/authenticator/passwordreset/generateresetcode?email=' + email)
                     .then(response => response.json())
                     .then((r) => {
                         if(r.result == "SUCCESS") {

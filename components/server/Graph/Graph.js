@@ -45,7 +45,7 @@ export default class Graph extends React.Component {
 
         // Server's pinned graph
         fetch(
-            "https://serverpanel.controlserverhosting.com/api/ping?server=" +
+            "http://localhost/api/ping?server=" +
                 server +
                 "&key=" +
                 this.state.token +
@@ -86,7 +86,7 @@ export default class Graph extends React.Component {
             });
 
         // Server's CPU graph
-        fetch( "https://serverpanel.controlserverhosting.com/api/cpuHistory?server=" + server )
+        fetch( "http://localhost/api/cpuHistory?server=" + server )
             .then((res) => res.json())
             .then((r) => {
                 console.log('CPU History');
@@ -120,7 +120,7 @@ export default class Graph extends React.Component {
 
 
         // Server's RAM graph
-        fetch( "https://serverpanel.controlserverhosting.com/api/ramHistory?server=" + server )
+        fetch( "http://localhost/api/ramHistory?server=" + server )
             .then((res) => res.json())
             .then((r) => {
                 console.log('RAM History');

@@ -15,11 +15,11 @@ export default function table() {
     let servers = [];
 
     const toggleAlerts = (e) => {
-        fetch("https://serverpanel.controlserverhosting.com/api/toggleEmailAlert?server=" + e.target.id + "&key=" + key);
+        fetch("http://localhost/api/toggleEmailAlert?server=" + e.target.id + "&key=" + key);
     }
 
     useEffect(() => {
-        fetch("https://serverpanel.controlserverhosting.com/api/getServers?email=" + email + "&key=" + key)
+        fetch("http://localhost/api/getServers?email=" + email + "&key=" + key)
         .then((res) => res.json())
         .then((r) => {
             for (let i = 0; i < r.result.length; i++) {

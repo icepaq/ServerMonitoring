@@ -18,7 +18,7 @@ export default function OverviewComponent() {
     const server = router.query.server;
     const token = cookies.get("logincookie");
 
-    fetch("https://serverpanel.controlserverhosting.com/api/serverinfo?server=" + server + "&key=" + token)
+    fetch("http://localhost/api/serverinfo?server=" + server + "&key=" + token)
         .then(response => response.json())
         .then(json => {
             setName(json.results.name);
@@ -37,7 +37,7 @@ export default function OverviewComponent() {
     const submit = () => {
         console.log(latency);
         console.log(loss);
-        fetch("https://serverpanel.controlserverhosting.com/api/updateServer?" 
+        fetch("http://localhost/api/updateServer?" 
             + "server=" + server
             + "&name=" + name
             + "&ping=" + latency

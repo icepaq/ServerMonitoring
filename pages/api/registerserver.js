@@ -6,7 +6,7 @@ export default async (req, res) => {
     const key = req.query.key;
     const server = req.query.server;
 
-    fetch("https://serverpanel.controlserverhosting.com/api/getkeys?key=" + key + "&server=" + server)
+    fetch("http://localhost/api/getkeys?key=" + key + "&server=" + server)
         .then(res => res.json())
         .then((r) => {
             if(r.result == null) {

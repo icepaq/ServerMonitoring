@@ -12,7 +12,7 @@ export default function table() {
     const router = useRouter();
 
     const remove = (e) => {
-        let query = "https://serverpanel.controlserverhosting.com/api/removeserver?server=" +
+        let query = "http://localhost/api/removeserver?server=" +
                         e.target.id +
                         "&key=" +
                         key + 
@@ -30,7 +30,7 @@ export default function table() {
     const pinserver = (e) => {
         const server = e.target.id;
         fetch(
-            "https://serverpanel.controlserverhosting.com/api/pinServer?server=" +
+            "http://localhost/api/pinServer?server=" +
                 server +
                 "&key=" +
                 key +
@@ -49,7 +49,7 @@ export default function table() {
     }
 
     let temp = [];
-    fetch("https://serverpanel.controlserverhosting.com/api/getServers?email=" + email + "&key=" + key)
+    fetch("http://localhost/api/getServers?email=" + email + "&key=" + key)
         .then((res) => res.json())
         .then((r) => {
             for (let i = 0; i < r.result.length; i++) {

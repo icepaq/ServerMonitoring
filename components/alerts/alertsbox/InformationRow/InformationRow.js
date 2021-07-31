@@ -14,7 +14,7 @@ export default function InformationRow() {
     const key = cookie.get("logincookie");
     const email = cookie.get("logincookieemail");
 
-    fetch("https://serverpanel.controlserverhosting.com/api/alertscount?email=" + email + "&key=" + key)
+    fetch("http://localhost/api/alertscount?email=" + email + "&key=" + key)
         .then((res) => res.json())
         .then((r) => {
             setLatency(r.latency);

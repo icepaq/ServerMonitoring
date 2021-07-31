@@ -19,7 +19,7 @@ export default function OverviewComponent() {
     const _key = cookie.get("logincookie");
     email = cookie.get("logincookieemail");
 
-    fetch("https://serverpanel.controlserverhosting.com/api/getUserConfig?email=" + _email + "&key=" + _key)
+    fetch("http://localhost/api/getUserConfig?email=" + _email + "&key=" + _key)
         .then((res) => res.json())
         .then((r) => {
             console.log(r);
@@ -60,7 +60,7 @@ export default function OverviewComponent() {
 
     const saveChanges = () => {
         // Check if email exists
-        fetch("https://serverpanel.controlserverhosting.com/api/authenticator/emailexists?email=" + email)
+        fetch("http://localhost/api/authenticator/emailexists?email=" + email)
             .then((res) => res.json())
             .then((r) => {
                 if (r.result == "EMAIL_EXISTS" && _email != EMAIL) {
@@ -68,7 +68,7 @@ export default function OverviewComponent() {
                     return;
                 }
                 let link =
-                    "https://serverpanel.controlserverhosting.com/api/updateAccount" +
+                    "http://localhost/api/updateAccount" +
                     "?key=" +
                     _key +
                     "&name=" +

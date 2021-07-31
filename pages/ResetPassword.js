@@ -36,7 +36,7 @@ export default function ResetPassword() {
         }
 
         // Call the API to reset the password
-        fetch("https://serverpanel.controlserverhosting.com/api/authenticator/passwordreset/resetpassword?code=" + code + "&password=" + newPassword)   
+        fetch("http://localhost/api/authenticator/passwordreset/resetpassword?code=" + code + "&password=" + newPassword)   
             .then(res => res.json())
             .then((r) => {
                 console.log(r);

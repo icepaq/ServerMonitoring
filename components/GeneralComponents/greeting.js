@@ -16,7 +16,7 @@ export default function OverviewComponent() {
 
     const router = useRouter();
 
-    fetch("https://serverpanel.controlserverhosting.com/api/getUserConfig?email=" + email + "&key=" + key)
+    fetch("http://localhost/api/getUserConfig?email=" + email + "&key=" + key)
         .then(response => response.json())
         .then(data => {
             console.log(data);
