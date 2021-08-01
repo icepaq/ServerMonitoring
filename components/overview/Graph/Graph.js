@@ -53,7 +53,7 @@ export default class Graph extends React.Component {
                         try {
                             for (let i = 0; i < 10; i++) {
                                 tempData.push(r.results[i].latency);
-                                tempLabels.push(r.results[i].datestring);
+                                tempLabels.push('');
                             }
                         } catch (err) {
                             this.setState({

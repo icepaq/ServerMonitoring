@@ -65,10 +65,10 @@ export default class Graph extends React.Component {
                 try {
                     for (let i = 0; i < 10; i++) {
                         tempData.push(r.results[i].latency);
-                        tempLabels.push(r.results[i].datestring);
+                        tempLabels.push('');
 
                         tempLossData.push(r.results[i].loss);
-                        tempLossLabels.push(r.results[i].datestring);
+                        tempLossLabels.push('');
                     }
                 } catch (err) {
                     this.setState({
@@ -101,9 +101,7 @@ export default class Graph extends React.Component {
                         console.log(cpu);
                         tempData.push(cpu);
 
-                        let tempTime = r.result[i].time;
-                        let tempDate = new Date(tempTime).toLocaleTimeString();
-                        tempLabels.push(tempDate);
+                        tempLabels.push('');
                     }
                 } catch (err) {
                     this.setState({
@@ -133,9 +131,7 @@ export default class Graph extends React.Component {
                     for (let i = r.result.length - 30; i < r.result.length; i++) {
                         tempData.push(r.result[i].ram);
                         
-                        let tempTime = r.result[i].time;
-                        let tempDate = new Date(tempTime).toLocaleTimeString();
-                        tempLabels.push(tempDate);
+                        tempLabels.push('');
                     }
                 } catch (err) {
                     this.setState({
