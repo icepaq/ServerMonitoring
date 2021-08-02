@@ -98,7 +98,7 @@ export default function Login() {
                         onChange={updateConfirmPassword}
                     />
                     <input
-                        type="password"
+                        type="text"
                         className={Styles.input}
                         placeholder="Beta Key"
                         onChange={updateBetaKey}
