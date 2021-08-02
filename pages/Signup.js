@@ -49,7 +49,7 @@ export default function Login() {
         }
 
         if (!password.match(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)) {
-            swal.fire('Invalid Password')
+            swal.fire('Invalid Password', '<p>Your password should include a capital, lowercase letter, number, special character and be at least 8 characters long.</p>')
             return;
         }
 
@@ -61,7 +61,7 @@ export default function Login() {
                     alert("Email Exists");
                     return;
                 }
-                fetch("http://localhost/api/authenticator/signup?email=" + email + "&password=" + password)
+                fetch("http://localhost/api/authenticator/signup?email=" + email + "&password=" + password + "&betakey=" + betakey)
                     .then((r) => r.json())
                     .then((r) => {
                         if (r.result == "INVALID_BETAKEY") {

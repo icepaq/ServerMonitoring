@@ -2,6 +2,6 @@ body {
     margin: 0;
 }
 
-.swal2-title {
+.swal2-title, p {
     font-family: Arial, Helvetica, sans-serif;
   }
