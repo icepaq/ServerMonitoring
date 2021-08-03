@@ -15,5 +15,6 @@ export async function register(server) {
         })
         .catch((err) => {
             console.log("Fetch Error");
+            console.log(err);
         });
 }

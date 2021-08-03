@@ -12,6 +12,7 @@ export default function Sidebar() {
             <Item message="Email Alerts" link="/EmailAlerts" />
             <Item message="API Keys" link="/Keys" />
             <Item message="Settings" link="/Settings" />
+            <Item message="Help" link="/Help" />
         </div>
     );
 }
