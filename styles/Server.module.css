@@ -35,7 +35,7 @@
     background-color: rgb(14, 14, 14);
     text-align: center;
     border-radius: 5px;
-    cursor: default;
+    cursor: pointer;
 
     width: 100px;
     padding: 10px 20px;
@@ -93,7 +93,7 @@
     background-color: rgb(14, 14, 14);
     text-align: center;
     border-radius: 5px;
-    cursor: default;
+    cursor: pointer;
 
     width: 100px;
     padding: 10px 20px;
@@ -106,7 +106,7 @@
     background-color: rgb(14, 14, 14);
     text-align: center;
     border-radius: 5px;
-    cursor: default;
+    cursor: pointer;
 
     width: 100px;
     padding: 10px 20px;
