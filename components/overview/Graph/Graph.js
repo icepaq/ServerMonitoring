@@ -51,7 +51,7 @@ export default class Graph extends React.Component {
                         let tempLabels = [];
 
                         try {
-                            for (let i = r.results.length - 1; i > r.results.length - 10; i--) {
+                            for (let i = 20; i >= 0; i--) {
                                 tempData.push(r.results[i].latency);
                                 tempLabels.push('');
                             }

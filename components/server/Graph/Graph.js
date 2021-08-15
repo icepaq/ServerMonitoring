@@ -38,12 +38,14 @@ export default class Graph extends React.Component {
         let strURL = window.location.href;
         let url = new URL(strURL);
         let server = url.searchParams.get("server");
-        
+        console.log('Server: ' + server);
         this.setState({
             ServerName: server,
         });
 
-        // Server's pinned graph
+        // Server's latency graph
+
+        console.log('CALLING PING');
         fetch(
             "http://localhost/api/ping?server=" +
                 server +
@@ -53,7 +55,8 @@ export default class Graph extends React.Component {
         )
             .then((res) => res.json())
             .then((r) => {
-
+                console.log('CALLED PING');
+                console.log('Results: ');
                 console.log(r);
 
                 let tempData = [];
@@ -63,14 +66,16 @@ export default class Graph extends React.Component {
                 let tempLossLabels = [];
 
                 try {
-                    for (let i = r.results.length - 1; i > r.results.length - 10; i--) {
+                    for (let i = 20; i >= 0; i--) {
                         tempData.push(r.results[i].latency);
+                        console.log('I: ' + i);
                         tempLabels.push('');
 
                         tempLossData.push(r.results[i].loss);
                         tempLossLabels.push('');
                     }
                 } catch (err) {
+                    console.log('Error: ' + err);
                     this.setState({
                         ServerName:
                             this.state.ServerName + " / No Data",
