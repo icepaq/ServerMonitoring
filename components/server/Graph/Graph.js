@@ -63,7 +63,7 @@ export default class Graph extends React.Component {
                 let tempLossLabels = [];
 
                 try {
-                    for (let i = r.results.length; i > r.results.length - 10; i--) {
+                    for (let i = r.results.length - 1; i > r.results.length - 10; i--) {
                         tempData.push(r.results[i].latency);
                         tempLabels.push('');
 
