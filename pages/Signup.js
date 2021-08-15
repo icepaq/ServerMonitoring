@@ -53,7 +53,7 @@ export default function Login() {
             return;
         }
 
-        fetch("http://localhost/api/authenticator/emailexists?email=" + email)
+        fetch("https://serverpanel.controlserverhosting.com/api/authenticator/emailexists?email=" + email)
             .then((r) => r.json())
             .then((r) => {
                 
@@ -61,7 +61,7 @@ export default function Login() {
                     alert("Email Exists");
                     return;
                 }
-                fetch("http://localhost/api/authenticator/signup?email=" + email + "&password=" + password + "&betakey=" + betakey)
+                fetch("https://serverpanel.controlserverhosting.com/api/authenticator/signup?email=" + email + "&password=" + password + "&betakey=" + betakey)
                     .then((r) => r.json())
                     .then((r) => {
                         if (r.result == "INVALID_BETAKEY") {

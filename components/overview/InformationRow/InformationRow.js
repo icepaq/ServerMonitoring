@@ -10,7 +10,7 @@ export default function InformationRow(props) {
     useEffect(() => {
         let isSubscribed = true;
 
-        fetch("http://localhost/api/OverviewAPI?key=" + props.token)
+        fetch("https://serverpanel.controlserverhosting.com/api/OverviewAPI?key=" + props.token)
             .then((res) => res.json())
             .then((r) => {
                 if (isSubscribed) {
